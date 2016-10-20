@@ -3,9 +3,21 @@
 	<head>
 		<title><%= title %></title>
 		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script type="text/javascript" src="/js/lib/jquery.js"></script>
+		<script type="text/javascript" src="/js/index.js"></script>
 	</head>
 	<body>
 		<div class="container">
+			<div><%= user.name %>'s friends:</div>
+			<ul class="friend-list">
+				<% user.friend.forEach(function(friend){ %>
+					<li><%= friend %></li>
+				<% }); %>
+			</ul>
+			<div><%= user.name %>'s record:</div>
+			<ul class="record-list">
+				
+			</ul>
 		</div>
 	</body>
 </html>
