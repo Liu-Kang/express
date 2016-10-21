@@ -5,9 +5,7 @@ html{
 
 .garden-box{
 	width: 90%;
+	height: 600px;
 	margin: 0 auto;
-}
-.garden-canvas{
-	width: 90%;
-	height: 300px;
+	position: relative;
 }

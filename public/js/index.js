@@ -6,19 +6,20 @@ var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
-$(document).ready(function(){
-    $('html').css('font-size',sizeRate);
-	indexInit();
-});
-
 function indexInit(){
+    $('html').css('font-size',sizeRate);
+    gardenSetting();
+}
+
+function gardenSetting(){
     $loveHeart = $("#loveHeart");
-    var offsetX = $loveHeart.width() / 2;
-    var offsetY = $loveHeart.height() / 2 - 55;
+    $loveHeart.height( $loveHeart.width() );
+    offsetX = $loveHeart.width() / 2;
+    offsetY = $loveHeart.height() / 2 - 55;
     $garden = $("#garden");
     gardenCanvas = $garden[0];
-    gardenCanvas.width = $("#loveHeart").width();
-    gardenCanvas.height = $("#loveHeart").height()
+    gardenCanvas.width = $loveHeart.width();
+    gardenCanvas.height = $loveHeart.height();
     gardenCtx = gardenCanvas.getContext("2d");
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
@@ -27,15 +28,11 @@ function indexInit(){
     setInterval(function () {
         garden.render();
     }, Garden.options.growSpeed);
-}
 
-$(window).resize(function() {
-    var newWidth = $(window).width();
-    var newHeight = $(window).height();
-    if (newWidth != clientWidth && newHeight != clientHeight) {
-        location.replace(location);
+    if (document.createElement('canvas').getContext) {
+        startHeartAnimation();
     }
-});
+}
 
 function getHeartPoint(angle) {
     var t = angle / Math.PI;
@@ -45,7 +42,6 @@ function getHeartPoint(angle) {
 }
 
 function startHeartAnimation() {
-    var interval = 50;
     var angle = 10;
     var heart = new Array();
     var animationTimer = setInterval(function () {
@@ -65,10 +61,12 @@ function startHeartAnimation() {
         }
         if (angle >= 30) {
             clearInterval(animationTimer);
-            showMessages();
         } else {
             angle += 0.2;
         }
-    }, interval);
+    }, 50);
 }
 
+$(document).ready(function(){
+    indexInit();
+});
