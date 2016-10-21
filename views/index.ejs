@@ -2,22 +2,25 @@
 <html>
 	<head>
 		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel='stylesheet' href='/css/index.css' />
 		<script type="text/javascript" src="/js/lib/zepto.min.js"></script>
 		<script type="text/javascript" src="/js/index.js"></script>
 	</head>
 	<body>
 		<div class="container">
-			<div><%= user.name %>'s friends:</div>
-			<ul class="friend-list">
-				<% user.friend.forEach(function(friend){ %>
-					<li><%= friend %></li>
-				<% }); %>
-			</ul>
-			<div><%= user.name %>'s record:</div>
-			<ul class="record-list">
-				
-			</ul>
+			<div id="loveHeart">
+				<canvas id="garden" width="670" height="625"></canvas>
+				<div id="words" style="position: absolute; top: 632px; left: 552.5px;">
+					<div id="messages" style="display: block;">
+						亲爱的，这是我们相爱在一起的时光。
+						<div id="elapseClock"><span class="digit">1302</span> days <span class="digit">16</span> hours <span class="digit">24</span> minutes <span class="digit">01</span> seconds</div>
+					</div>
+					<div id="loveu" style="display: block;">
+						爱你直到永永远远。<br>
+						<div class="signature">- 李先生</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
