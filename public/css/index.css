@@ -5,7 +5,14 @@ html{
 
 .garden-box{
 	width: 90%;
-	height: 600px;
+	height: 6rem;
 	margin: 0 auto;
 	position: relative;
+}
+.garden-text{
+	width: 2rem;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	margin-left: -1rem;
 }
