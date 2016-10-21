@@ -1,0 +1,13 @@
+@charset "utf-8"
+html{
+	font-size: 100px;
+}
+
+.garden-box{
+	width: 90%;
+	margin: 0 auto;
+}
+.garden-canvas{
+	width: 90%;
+	height: 300px;
+}
