@@ -4,13 +4,10 @@
 		<title><%= title %></title>
 		<link rel='stylesheet' href='/css/base.css' />
 		<link rel='stylesheet' href='/css/index.css' />
-		<script type="text/javascript" src="/js/lib/zepto.min.js"></script>
-		<script type="text/javascript" src="/js/lib/garden.js"></script>
-		<script type="text/javascript" src="/js/lib/snow.js"></script>
-		<script type="text/javascript" src="/js/index.js"></script>
+		
 	</head>
 	<body>
-		<section class="container hide">
+		<section class="container garden-container hide">
 			<div class="center garden-box" id="loveHeart">
 				<canvas class="garden-canvas" id="garden"></canvas>
 				<div class="garden-text">
@@ -28,10 +25,18 @@
 				</div>
 			</div>
 		</section>
-		<section>
-			<div style="background:#2684C2; width:100%; height:500px; line-height:500px; font-size:100px; text-align:center; color:#FFFFFF">
+		<section  class="container snow-container" id="snow">
+			<div class="snow-box">
 				<strong>I LOVE U</strong>
 			</div>
 		</section>
+		<section  class="container neon-container hide">
+			<canvas width="100%" height="100%"></canvas>
+		</section>
 	</body>
+	<script type="text/javascript" src="/js/lib/zepto.min.js"></script>
+	<script type="text/javascript" src="/js/lib/garden.js"></script>
+	<script type="text/javascript" src="/js/lib/snow.js"></script>
+	<script type="text/javascript" src="/js/lib/neon.js"></script>
+	<script type="text/javascript" src="/js/index.js"></script>
 </html>

@@ -9,6 +9,7 @@ var clientHeight = $(window).height();
 function indexInit(){
     $('html').css('font-size',sizeRate);
     gardenSetting();
+    neon();
 }
 
 function gardenSetting(){
@@ -65,6 +66,18 @@ function startHeartAnimation() {
             angle += 0.2;
         }
     }, 50);
+}
+
+function neon(){
+    $('.neon-container canvas').let_it_snow({
+        windPower: 0,
+        speed: 0,
+        color: '#F21313',
+        size:100,
+        opacity: 0.00000001,
+        count: 25,
+        interaction: false
+    });
 }
 
 $(document).ready(function(){
