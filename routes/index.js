@@ -9,7 +9,7 @@ module.exports = function(app){
  		recordlist : ['201601','201603','201604','201606','201610']
  	}
 	/* GET home page. */
-	app.get('/', function(req, res, next) {
+	app.get('/index', function(req, res, next) {
 	    res.render('index',{
 	  	 	title:'record',
 	  	 	user:user

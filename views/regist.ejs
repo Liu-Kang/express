@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<%- include head %>
+	<link rel="stylesheet" href="/css/lib/weui.css" />
+	<link rel="stylesheet" href="/css/regist.css" />
+	<body>
+		<section class="container">
+			<div class="regist-op clearfix">
+				<a href="/" class="fl bluetext">主页</a>
+				<a href="/login" class="fr bluetext">登录</a>
+			</div>
+			<div id="regForm" class="bggray">
+				<div class="input-list">
+					<div class="flexbox input-sg">
+		                <div class="input-tip">用户名</div>
+		                <div class="flex1 input-box">
+		                    <input class="input" id="username" type="text">
+		                </div>
+		            </div>
+		            
+		            <div class="flexbox input-sg">
+		                <div class="input-tip">手机号</div>
+		                <div class="flex1 input-box">
+		                    <input class="input" id="cellphone" type="text">
+		                </div>
+		            </div>
+		            <div class="flexbox input-sg">
+		                <div class="input-tip">密码</div>
+		                <div class="flex1 input-box">
+		                    <input class="input" id="password" type="password">
+		                </div>
+		            </div>
+		            <div class="flexbox input-sg">
+		                <div class="input-tip">确认密码</div>
+		                <div class="flex1 input-box">
+		                    <input class="input" id="rePassword" type="password">
+		                </div>
+		            </div>
+	            </div>
+	            <div class="mt10 sex-box">
+		           <div class="radio-sg">
+		           		<input type="radio" name="sex" id="male" value="1" checked="checked">
+		           		<label for="male">男</label>
+		           </div>
+		           <div class="radio-sg">
+		           		<input type="radio" name="sex" id="female" value="0">
+		           		<label for="female">女</label>
+		           </div>
+		        </div>
+		        <div class="ofh por submit-box">
+		        	<div class="redtext error-msg hide" id="error"></div>
+	            	<a href="javascript:;" id="regSubmit" class="btn mt30">注&nbsp;册</a>
+		        </div>
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="/js/regist.js"></script>
+</html>
