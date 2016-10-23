@@ -23,7 +23,7 @@ function registSubmit(){
             cellphone:$.trim($('#cellphone').val()),
             password:$.trim($('#password').val()),
             rePassword:$.trim($('#rePassword').val()),
-            sex:$('#sex').val()
+            sex:$('[name="sex"]').val()
         }
 
         if( !usernameCheck(oData.username) ){
@@ -43,14 +43,14 @@ function registSubmit(){
         $.ajax({
             url:'/regist/submit/',
             data:oData,
-            type:'POST',
+            type:'get',
             dataType:'json',
             success:function(result){
                 if(result.errorCode === 0){
                     alertBox('注册成功');
-                    window.setTimeout(function(){
-                        window.location.href = result.url;
-                    },2000);
+                    // window.setTimeout(function(){
+                    //     window.location.href = result.url;
+                    // },2000);
                 }else{
                     $('#error').text(result.errorMsg).show();
                 }
@@ -71,10 +71,6 @@ function registSubmit(){
 function usernameCheck(name){
     if(name == ''){
         $('#error').text('请输入用户名').show();
-        return false;
-    }
-    if(name.length < 3){
-        $('#error').text('用户名不能少于3个字').show();
         return false;
     }
     if(name.length > 10){
