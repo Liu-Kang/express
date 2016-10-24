@@ -23,7 +23,7 @@ function registSubmit(){
             cellphone:$.trim($('#cellphone').val()),
             password:$.trim($('#password').val()),
             rePassword:$.trim($('#rePassword').val()),
-            sex:$('[name="sex"]').val()
+            sex:$('[name="sex"]:checked').val()
         }
 
         if( !usernameCheck(oData.username) ){
