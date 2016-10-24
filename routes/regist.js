@@ -14,7 +14,8 @@ module.exports = function(app){
  */
 function registAction(req, res, next){
 	res.render('regist',{
-    	title:'注册Express'
+    	title:'注册Express',
+    	loginUrl:'http://' + req.headers.host + '/login'
     });
 }
 

@@ -15,7 +15,8 @@ module.exports = function(app){
  */
 function loginAction(req,res,next){
 	res.render('login',{
-		title:'登录Express'
+		title:'登录Express',
+		regUrl:'http://' + req.headers.host + '/regist'
 	});
 }
 
