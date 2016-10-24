@@ -1,6 +1,8 @@
 var express = require('express');
-var router = express.Router();
+var crypto = require('crypto');
 var User = require('../models/user');
+
+var router = express.Router();
 
 module.exports = function(app){
 	app.get('/regist', registAction);
@@ -20,33 +22,30 @@ function registAction(req, res, next){
  * 注册用户信息
  */
 function submitAction(req, res, next){
-	var data = req.query;
-	if(req.method == 'POST'){
-		data = req.body;
-	}
-
-	var newUser = {
-		username : data.username,
-		cellphone : data.cellphone,
-		password : data.password,
-		sex : data.sex
-	};
-
-	var rePassword = data.rePassword;
-	
-	
-	if(newUser.password !== rePassword){
+	var data = req.method == 'GET' ? req.query : req.body;
+	if(data.password !== data.rePassword){
 		return res.json({
 			errorCode:-1,
 			errorMsg:'两次输入的密码不一致!',
 			url:'',
 		});
 	}
+
+	var md5 = crypto.createHash('md5');
+	var password = md5.update(data.password).digest('hex');
+
+	var newUser = {
+		username : data.username,
+		cellphone : data.cellphone,
+		password : password,
+		sex : data.sex
+	};
+
 	var user = new User(newUser);
 
 	user.getUserByName(function(result){
 		//不能把create操作单独拿到外面，
-		//原因似乎是return res.json这步操作需要花时间？
+		//原因似乎是return res.json这是异步操作？没有return完成就执行了下面的注册的res.json
 		//一个方法里面不能执行两次res.xxx的操作，否则报错：
 		//Can't set headers after they are sent
 		if(result.length > 0){

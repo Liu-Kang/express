@@ -12,6 +12,11 @@ function User(user){
 
 module.exports = User;
 
+/**
+ * 创建用户
+ * @param  {Function} callback [数据库操作完成回调函数，供路由使用]
+ * @return {[type]}            [description]
+ */
 User.prototype.createUser = function(callback){
 	var self = this;
 	pool.getConnection(function(err,connection){
@@ -30,11 +35,16 @@ User.prototype.createUser = function(callback){
 	});
 }
 
+/**
+ * 根据用户名搜索
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
 User.prototype.getUserByName = function(callback){
 	var self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
-			'select username from user where username="'+self.username+'";',
+			'select * from user where username="' + self.username + '";',
 			function(err,result){
 				if(err) throw err;
 
@@ -46,4 +56,3 @@ User.prototype.getUserByName = function(callback){
 		connection.release();
 	});
 }
-

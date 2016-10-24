@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<%- include head %>
+	<link rel="stylesheet" href="/css/main.css" />
+	<body>
+		<section class="container">
+			<div class="head-op clearfix">
+				<a href="/" class="fl bluetext">主页</a>
+			</div>
+			<div id="loginForm" class="bggray">
+				<div class="input-list">
+					<div class="flexbox input-sg">
+		                <div class="input-tip">用户名</div>
+		                <div class="flex1 input-box">
+		                    <input class="input" id="username" type="text">
+		                </div>
+		            </div>
+		            <div class="flexbox input-sg">
+		                <div class="input-tip">密码</div>
+		                <div class="flex1 input-box">
+		                    <input class="input" id="password" type="password">
+		                </div>
+		            </div>
+	            </div>
+		        <div class="ofh por tac submit-box">
+		        	<div class="redtext error-msg hide" id="error"></div>
+	            	<a href="javascript:;" id="loginSubmit" class="btn mt40">登&nbsp;录</a>
+	            	<p class="mt20">没有账号？<a href="#" class="bluetext">注册</a></p>
+		        </div>
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="/js/login.js"></script>
+</html>
