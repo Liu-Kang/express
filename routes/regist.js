@@ -60,7 +60,7 @@ function submitAction(req, res, next){
 				return res.json({
 					errorCode:0,
 					errorMsg:'注册成功',
-					url:'http://localhost:3000/'
+					url:'http://' + req.headers.host + '/login'
 				});
 			});
 		}

@@ -39,9 +39,9 @@ function loginSubmit(){
             success:function(result){
                 if(result.errorCode === 0){
                     alertBox('登录成功');
-                    // window.setTimeout(function(){
-                    //     window.location.href = result.url;
-                    // },2000);
+                    window.setTimeout(function(){
+                        window.location.href = result.url;
+                    },2000);
                 }else{
                     $('#error').text(result.errorMsg).show();
                 }

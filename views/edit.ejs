@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<%- include head %>
+	<link rel="stylesheet" href="/css/main.css" />
+	<link rel="stylesheet" href="/css/edit.css" />
+	<body>
+		<section class="container">
+			<div class="head-op clearfix">
+				<% if(user.userid){ %>
+				<span class="fl">
+					<span class="mr10">欢迎你，<%= user.username %></span>
+				</span>
+				<a class="fr" href="/<%= user.userid %>">我的主页</a>
+				<% }else{ %>
+				<span class="fr">
+					<a href="/login">登录</a>&nbsp;/&nbsp;<a href="/regist">注册</a>
+				</span>
+				<% } %>
+			</div>
+			<div class="edit-form bggray">
+				<div class="input-list">
+					<div class="input-sg">
+		                <div class="input-tip">标题</div>
+		                <div class="input-box">
+		                    <input class="input" id="title" type="text">
+		                </div>
+		            </div>
+		            <div class="input-sg">
+		                <div class="input-tip">正文</div>
+		                <div class="input-box">
+		                	<textarea class="textarea" id="article"></textarea>
+		                </div>
+		            </div>
+	            </div>
+		        <div class="ofh por tac submit-box">
+		        	<div class="redtext error-msg hide" id="error"></div>
+	            	<a href="javascript:;" id="editSubmit" class="btn mt40">完&nbsp;成</a>
+		        </div>
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript" src="/js/login.js"></script>
+</html>

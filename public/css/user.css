@@ -1,0 +1,17 @@
+@charset "utf-8"
+html{
+	font-size: 100px;
+}
+.bottom-btn{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 0.50rem;
+	width: 100%;
+	padding: 0;
+}
+.go-express{
+	height: 0.50rem;
+	line-height: 0.50rem;
+	border-radius: 0;
+}

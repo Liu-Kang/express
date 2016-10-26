@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<%- include head %>
+	<link rel="stylesheet" href="/css/user.css" />
+	<body>
+		<canvas class="pagebg" id="index-canvas" width="100%" height="100%"></canvas>
+		<section  class="container">
+			<div class="head-op clearfix">
+				<% if(user.userid){ %>
+				<span class="fl">
+					<span class="mr10">欢迎你，<%= user.username %></span>
+				</span>
+				<a class="fr" href="/">首页</a>
+				<% } %>
+			</div>
+		</section>
+		<section class="bottom-btn">
+			<a href="/edit" class="btn go-express">go Express</a>
+		</section>
+	</body>
+	<script type="text/javascript" src="/js/userMain.js"></script>
+</html>

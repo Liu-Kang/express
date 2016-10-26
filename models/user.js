@@ -56,3 +56,25 @@ User.prototype.getUserByName = function(callback){
 		connection.release();
 	});
 }
+
+/**
+ * 根据用户名获取该用户所有的作品集
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+User.prototype.getUserHistory = function(callback){
+	var self = this;
+	pool.getConnection(function(err,connection){
+		connection.query(
+			'select * from record where uid="' + self.username + '";',
+			function(err,result){
+				if(err) throw err;
+
+				if(result){
+					callback(result);
+				}
+			}
+		);
+		connection.release();
+	});
+}

@@ -16,7 +16,8 @@ module.exports = function(app){
 function loginAction(req,res,next){
 	res.render('login',{
 		title:'登录Express',
-		regUrl:'http://' + req.headers.host + '/regist'
+		regUrl:'http://' + req.headers.host + '/regist',
+		userid:req.cookies.userid
 	});
 }
 
@@ -45,9 +46,15 @@ function checkLoginInfoAction(req,res,next){
 					errorMsg:'密码错误'
 				};
 			}else{
+				var user = {
+					userid:result[0].id,
+					username:result[0].username
+				};
+				res.cookie('user',user, {maxAge:1000*60*60*24,httpOnly: false});
 				ajaxRes = {
 					errorCode:0,
-					errorMsg:'登录成功'
+					errorMsg:'登录成功',
+					url:'http://' + req.headers.host + '/'
 				};
 			}
 		}else{

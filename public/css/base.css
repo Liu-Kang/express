@@ -18,10 +18,22 @@ body{
 	background-color: #f5f5f5;
 	overflow-x: hidden;
 }
-a{text-decoration: none;}
+a{text-decoration: none;color: #333;}
 .container{
 	width: 94%;
 	margin: 0 auto;
+    z-index: 9;
+    position: relative;
+}
+.head-op{
+    height: 0.50rem;
+    line-height: 0.50rem;
+    padding: 0 0.15rem;
+}
+.pagebg{
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 .hide{display: none;}
 .bgwhite{background-color: #fff !important;}
@@ -39,6 +51,7 @@ a{text-decoration: none;}
 .mt40{margin-top: 0.4rem !important;}
 .ofh{overflow: hidden !important;}
 .bluetext{color: #225fba !important;}
+.cfff{color: #fff !important;}
 .fl{float: left !important;}
 .fr{float: right !important;}
 .clearfix {
