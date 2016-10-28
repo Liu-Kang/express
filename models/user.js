@@ -4,6 +4,7 @@ var config = require('../conf/config');
 var pool = mysql.createPool(config.mysql);
 
 function User(user){
+	var user = user || {};
 	this.username = user.username;
 	this.cellphone = user.cellphone;
 	this.password = user.password;
@@ -58,15 +59,37 @@ User.prototype.getUserByName = function(callback){
 }
 
 /**
- * 根据用户名获取该用户所有的作品集
+ * 根据用户id插入record
  * @param  {Function} callback [description]
  * @return {[type]}            [description]
  */
-User.prototype.getUserHistory = function(callback){
-	var self = this;
+User.prototype.insertRecordByUserid = function(record,callback){
 	pool.getConnection(function(err,connection){
 		connection.query(
-			'select * from record where uid="' + self.username + '";',
+			'insert into record (uid,cdate,udate,title,article) values (?,now(),now(),?,?)',
+			[record.userid,record.title,record.article],
+			function(err,result){
+				if(err) throw err;
+
+				if(result){
+					callback(result);
+				}
+			}
+		);
+		connection.release();
+	});
+}
+
+/**
+ * 根据用户id获取record列表
+ * @param  {[type]}   param    [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+User.prototype.getRecordByUserid = function(param,callback){
+	pool.getConnection(function(err,connection){
+		connection.query(
+			'select * from record where uid='+param.userid+' order by cdate limit ' + param.length,
 			function(err,result){
 				if(err) throw err;
 

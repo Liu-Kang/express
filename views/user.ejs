@@ -13,6 +13,14 @@
 				<a class="fr" href="/">首页</a>
 				<% } %>
 			</div>
+			<ul class="record-list">
+				<% user.records.forEach(function(record){ %>
+				<li class="record-sg clearfix" data-rid="<%= record.rid %>">
+					<div class="ellipsis fl record-title"><%= record.title %></div>
+					<div class="fr record-cdate"><%= moment(record.cdate).format('MM/DD') %></div>
+				</li>
+				<% }); %>
+			</ul>
 		</section>
 		<section class="bottom-btn">
 			<a href="/edit" class="btn go-express">go Express</a>

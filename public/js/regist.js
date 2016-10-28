@@ -14,7 +14,9 @@ function registInit(){
  */
 function registSubmit(){
     $('#regSubmit').click(function(){
-        if($(this).attr('data-ajax') === 1){
+        var $tgt = $(this);
+        
+        if($tgt.attr('data-ajax') === 1){
             return;
         }
 
@@ -39,7 +41,7 @@ function registSubmit(){
             return false;
         }
 
-        $(this).attr('data-ajax',1);
+        $tgt.attr('data-ajax',1);
         $.ajax({
             url:'/regist/submit/',
             data:oData,
@@ -59,7 +61,7 @@ function registSubmit(){
                 alertBox('服务器出问题了');
             },
             complete:function(){
-                $(this).attr('data-ajax',0);
+                $tgt.attr('data-ajax',0);
             }
         })
     });

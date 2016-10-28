@@ -14,7 +14,8 @@ function registInit(){
  */
 function loginSubmit(){
     $('#loginSubmit').click(function(){
-        if($(this).attr('data-ajax') === 1){
+        var $tgt = $(this);
+        if($tgt.attr('data-ajax') === 1){
             return;
         }
 
@@ -30,7 +31,7 @@ function loginSubmit(){
             return false;
         }
 
-        $(this).attr('data-ajax',1);
+        $tgt.attr('data-ajax',1);
         $.ajax({
             url:'/login/checkLoginInfo/',
             data:oData,
@@ -50,9 +51,9 @@ function loginSubmit(){
                 alertBox('服务器出问题了');
             },
             complete:function(){
-                $(this).attr('data-ajax',0);
+                $tgt.attr('data-ajax',0);
             }
-        })
+        });
     });
 }
 

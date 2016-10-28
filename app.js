@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var regist = require('./routes/regist');
 var login = require('./routes/login');
 var user = require('./routes/user');
+var record = require('./routes/record');
 
 var app = express();
 
@@ -31,6 +32,7 @@ index(app);
 regist(app);
 login(app);
 user(app);
+record(app);
 
 
 // catch 404 and forward to error handler

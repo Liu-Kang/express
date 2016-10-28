@@ -15,3 +15,11 @@ html{
 	line-height: 0.50rem;
 	border-radius: 0;
 }
+.record-sg{
+	height: 0.30rem;
+	line-height: 0.30rem;
+	padding: 0.05rem 0;
+}
+.record-title{
+	width: 70%;
+}
