@@ -19,8 +19,16 @@ function recordAction(req,res,next){
 		username:req.cookies.user.username
 	};
 
-	res.render('record',{
-  	 	title:'Record',
-  	 	user:userInfo
-    });
+	var record = new Record();
+	record.getRecordByRid(req.params.recordid,function(result){
+		if(result.length > 0){
+			res.render('record',{
+		  	 	title:'Record',
+		  	 	user:userInfo,
+		  	 	record:result[0]
+		    });
+		}
+	});
+
+	
 }

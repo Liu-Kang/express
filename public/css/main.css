@@ -1,7 +1,4 @@
-@charset "utf-8"
-html{
-	font-size: 100px;
-}
+@charset "utf-8";
 .input-sg{
 	padding: 0.10rem 0.15rem;
     position: relative;

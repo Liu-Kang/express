@@ -1,8 +1,4 @@
-@charset "utf-8"
-html{
-	font-size: 100px;
-}
-
+@charset "utf-8";
 .garden-box{
 	width: 90%;
 	height: 6rem;

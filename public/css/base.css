@@ -112,6 +112,12 @@ input[type="text"],input[type="password"]{
     line-height: 0.4rem;
     font-size: 0.16rem;
 }
+.empty{
+    text-align: center;
+    color: #999;
+    height: 0.80rem;
+    line-height: 0.80rem;
+}
 .alertbox {
     max-width: 50%;
     padding: 15px 20px;

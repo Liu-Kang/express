@@ -83,8 +83,8 @@ function checkArticle(article){
 		return false;
 	}
 
-	if(article.length < 20){
-		alertBox('正文长度不少于5个字');
+	if(article.length < 10){
+		alertBox('正文长度不少于10个字');
 		return false;
 	}
 

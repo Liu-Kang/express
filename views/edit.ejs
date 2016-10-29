@@ -10,7 +10,7 @@
 				<span class="fl">
 					<span class="mr10">欢迎你，<%= user.username %></span>
 				</span>
-				<a class="fr" href="/<%= user.userid %>">我的主页</a>
+				<a class="fr" href="/user/<%= user.userid %>">我的主页</a>
 				<% }else{ %>
 				<span class="fr">
 					<a href="/login">登录</a>&nbsp;/&nbsp;<a href="/regist">注册</a>

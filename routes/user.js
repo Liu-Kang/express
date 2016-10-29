@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Record = require('../models/record');
 
 module.exports = function(app){
-	app.get('/user/:username',userAction);
+	app.get('/user/:userid',userAction);
 	app.all('/user/getRecord',getRecord);
 	app.get('/edit',editAction);
 	app.all('/edit/submitRecord',editRecord);
@@ -17,18 +18,19 @@ function userAction(req,res,next){
 	}
 
 	var userInfo = {
-		userid:req.cookies.user.userid,
-		username:req.cookies.user.username
+		userid:req.params.userid,
+		loginid:req.cookies.user.userid,
+		loginname:req.cookies.user.username
 	};
 
 	var param = {
-		userid:req.cookies.user.userid,
-		length:10
+		userid:req.params.userid,
+		limit:20
 	}
 
-	var user = new User(user);
+	var record = new Record();
 
-	user.getRecordByUserid(param,function(result){
+	record.getRecordByUserid(param,function(result){
 		userInfo.records = result;
 		res.render('user',{
 	  	 	title:'Home',
@@ -53,8 +55,8 @@ function getRecord(req,res,next){
 		userid:data.userid
 	}
 
-	var user = new User();
-	user.getRecordByUserid(record,function(result){
+	var record = new Record();
+	record.getRecordByUserid(param,function(result){
 		return res.json({
 			errorCode:0,
 			errorMsg:'编辑成功'
@@ -86,7 +88,7 @@ function editAction(req,res,next){
  */
 function editRecord(req,res,next){
 	var data = req.method == 'GET' ? req.query : req.body;
-	var record = {
+	var param = {
 		userid:data.userid,
 		title:data.title,
 		article:data.article
@@ -99,8 +101,8 @@ function editRecord(req,res,next){
 		});
 	}
 
-	var user = new User();
-	user.insertRecordByUserid(record,function(result){
+	var record = new Record();
+	record.insertRecordByUserid(param,function(result){
 		return res.json({
 			errorCode:0,
 			errorMsg:'编辑成功'
