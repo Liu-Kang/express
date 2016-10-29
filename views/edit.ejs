@@ -8,7 +8,7 @@
 			<div class="head-op clearfix">
 				<% if(user.userid){ %>
 				<span class="fl">
-					<span class="mr10">欢迎你，<%= user.username %></span>
+					<span class="mr10"><%= user.username %></span>
 				</span>
 				<a class="fr" href="/user/<%= user.userid %>">我的主页</a>
 				<% }else{ %>
@@ -17,7 +17,7 @@
 				</span>
 				<% } %>
 			</div>
-			<div class="edit-form bggray">
+			<div class="edit-form">
 				<div class="input-list">
 					<div class="input-sg">
 		                <div class="input-tip">标题</div>

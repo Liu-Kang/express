@@ -2,10 +2,10 @@
 .input-sg{
 	padding: 0.10rem 0.15rem;
     position: relative;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #cfcfcf;
 }
 .input-tip{
-	width: 40%;
+	width: 20%;
 	height: 0.4rem;
     line-height: 0.4rem;
 	padding-right: 0.10rem;

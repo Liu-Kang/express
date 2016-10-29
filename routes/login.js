@@ -6,6 +6,7 @@ var crypto = require('crypto');
 
 module.exports = function(app){
 	app.get('/login',loginAction);
+	app.get('/loginOut',loginOut);
 	app.all('/login/checkLoginInfo',checkLoginInfoAction);
 };
 
@@ -65,4 +66,17 @@ function checkLoginInfoAction(req,res,next){
 
 		res.json(ajaxRes);
 	});
+}
+
+/**
+ * 退出登录
+ */
+function loginOut(req,res,next){
+	res.clearCookie('user');
+	res.json({
+		errorCode:0,
+		errorMsg:'成功退出',
+		url:'http://' + req.headers.host + '/'
+	});
+
 }

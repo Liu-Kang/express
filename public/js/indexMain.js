@@ -4,18 +4,14 @@
 var sizeRate = document.documentElement.clientWidth / 375.0 * 100;
 function indexInit(){
     $('html').css('font-size',sizeRate);
-    neon();
-}
-
-function neon(){
-    $('#index-canvas').let_it_snow({
-        windPower: 0,
-        speed: 0,
-        color: '#F21313',
-        size:50,
-        opacity: 0.00001,
-        count: 15,
-        interaction: false
+    $('.type-writer').typewriter(function(){
+    	window.setTimeout(function(){
+    		$('.type-writer').css({
+	    		'top':'-0.20rem',
+	    		'transform':'scale(0.8)'
+	    	}).addClass('scaleout');
+	    	$('.go-express').show().addClass('scalein');
+    	},2000);
     });
 }
 

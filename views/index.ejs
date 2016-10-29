@@ -3,22 +3,45 @@
 	<%- include head %>
 	<link rel="stylesheet" href="/css/index.css" />
 	<body>
-		<canvas class="pagebg" id="index-canvas" width="100%" height="100%"></canvas>
-		<section  class="container">
+		<%- include ./module/snow %>
+		<audio autoplay="autopaly">
+		  <source src="http://win.web.rf01.sycdn.kuwo.cn/resource/n1/49/22/757273276.mp3" type="audio/mp3">
+		</audio>
+		<section class="por z99 container index-container">
 			<div class="cfff head-op clearfix">
 				<% if(user.userid){ %>
 				<span class="fl">
-					<span class="mr10">欢迎你，<%= user.username %></span>
+					<span class="mr10"><%= user.username %></span>
 				</span>
-				<a class="cfff fr" href="/user/<%= user.userid %>">我的主页</a>
+				<a class="fr login-out" href="javascript:void(0);">退出</a>
+				<a class="fr mr10" href="/user/<%= user.userid %>">我的主页</a>
 				<% }else{ %>
-				<span class="fr cfff">
-					<a href="/login" class="cfff">登录</a>&nbsp;/&nbsp;<a href="/regist" class="cfff">注册</a>
+				<span class="fr">
+					<a href="/login">登录</a>&nbsp;/&nbsp;<a href="/regist">注册</a>
 				</span>
 				<% } %>
 			</div>
+			<div class="cfff type-writer">
+				<p>我打江南走过</p>
+			　　<p>那等在季节里的容颜如莲花的开落</p>
+			　　<p>东风不来，三月的柳絮不飞</p>
+			　　<p>你的心如小小的寂寞的城</p>
+			　　<p>恰若青石的街道向晚</p>
+			　　<p>跫音不响，三月的春帷不揭</p>
+			　　<p>你的心是小小的窗扉紧掩</p>
+			　　<p>我哒哒的马蹄是美丽的错误</p>
+			　　<p>我不是归人，是个过客……</p>
+			</div>
+			<div class="go-express" style="display:none;">
+				<% if(user.userid){ %>
+				<a href="/edit">Click Here to Express Your Love</a>
+				<% }else{ %>
+				<a href="/login">Click Here to Express Your Love</a>
+				<% } %>
+				
+			</div>
 		</section>
 	</body>
-	<script type="text/javascript" src="/js/lib/neon.js"></script>
+	<script type="text/javascript" src="/js/lib/typewriter.js"></script>
 	<script type="text/javascript" src="/js/indexMain.js"></script>
 </html>

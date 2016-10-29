@@ -63,7 +63,7 @@ function registSubmit(){
             complete:function(){
                 $tgt.attr('data-ajax',0);
             }
-        })
+        });
     });
 }
 

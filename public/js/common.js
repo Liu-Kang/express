@@ -1,3 +1,27 @@
+$(document).ready(function(){
+    loginOut();
+});
+
+function loginOut(){
+    $('body').on('click','.login-out',function(){
+        $.ajax({
+            url:'/loginOut/',
+            type:'get',
+            dataType:'json',
+            success:function(result){
+                if(result.errorCode === 0){
+                    window.location.href = result.url;
+                }else{
+                    $('#error').text(result.errorMsg).show();
+                }
+            },
+            error:function(){
+                alertBox('服务器出问题了');
+            }
+        });
+    });
+}
+
 function alertBox(msg){
 	if ($('.alertbox').length <= 0) {
 		var alertHtml = 
