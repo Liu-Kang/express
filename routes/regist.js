@@ -1,8 +1,5 @@
-var express = require('express');
 var crypto = require('crypto');
 var User = require('../models/user');
-
-var router = express.Router();
 
 module.exports = function(app){
 	app.get('/regist', registAction);

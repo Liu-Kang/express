@@ -1,7 +1,6 @@
 /**
  * 用户登录
  */
-var express = require('express');
 var User = require('../models/user');
 var crypto = require('crypto');
 

@@ -7,12 +7,6 @@ var bodyParser = require('body-parser');
 // var session = require('express-session');
 // var flash = require('connect-flash');
 
-var index = require('./routes/index');
-var regist = require('./routes/regist');
-var login = require('./routes/login');
-var user = require('./routes/user');
-var record = require('./routes/record');
-
 var app = express();
 
 // view engine setup
@@ -27,12 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-index(app);
-regist(app);
-login(app);
-user(app);
-record(app);
+//页面路由
+var myRouter = require('./router');
+myRouter(app);
 
 
 // catch 404 and forward to error handler
