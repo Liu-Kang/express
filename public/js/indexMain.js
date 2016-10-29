@@ -4,6 +4,7 @@
 var sizeRate = document.documentElement.clientWidth / 375.0 * 100;
 function indexInit(){
     $('html').css('font-size',sizeRate);
+
     $('.type-writer').typewriter(function(){
     	window.setTimeout(function(){
     		$('.type-writer').css({

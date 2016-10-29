@@ -6,7 +6,7 @@
 		transform:scale(1);
 	}
 	100% {
-		top:-0.20rem;
+		top:-0.30rem;
 		transform:scale(0.8);
 	}
 }
@@ -18,7 +18,7 @@
 		-moz-transform:scale(1);
 	}
 	100% {
-		top:-0.20rem;
+		top:-0.30rem;
 		-moz-transform:scale(0.8);
 	}
 }
@@ -30,7 +30,7 @@
 		-webkit-transform:scale(1);
 	}
 	100% {
-		top:-0.20rem;
+		top:-0.30rem;
 		-webkit-transform:scale(0.8);
 	}
 }
@@ -38,9 +38,11 @@
 @keyframes scalein
 {
 	0% {
+		top:0;
 		transform:scale(0.3);
 	}
 	100% {
+		top:-0.30rem;
 		transform:scale(1);
 	}
 }
@@ -48,9 +50,11 @@
 @-moz-keyframes scalein
 {
 	0% {
+		top:0;
 		-moz-transform:scale(0.3);
 	}
 	100% {
+		top:-0.30rem;
 		-moz-transform:scale(1);
 	}
 }
@@ -58,9 +62,11 @@
 @-webkit-keyframes scalein
 {
 	0% {
+		top:0;
 		-webkit-transform:scale(1);
 	}
 	100% {
+		top:-0.30rem;
 		-webkit-transform:scale(0.3);
 	}
 }
@@ -92,6 +98,8 @@
 	width: 100%;
 	text-align: center;
 	font-size: 0.18rem;
+	position: relative;
+	top: -0.30rem;
 }
 .scalein{
 	animation-name: scalein;

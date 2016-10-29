@@ -19,7 +19,8 @@ function indexAction(req,res,next){
 	
 	res.render('index',{
   	 	title:'Express',
-  	 	user:user
+  	 	user:user,
+  	 	moment:require('moment')
     });
 }
 
