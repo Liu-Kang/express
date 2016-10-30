@@ -3,16 +3,16 @@
 	<%- include head %>
 	<link rel="stylesheet" href="/css/user.css" />
 	<body>
-		<canvas class="pagebg" id="index-canvas" width="100%" height="100%"></canvas>
+		<%- include ./module/snow %>
+		<section class="head-op clearfix">
+			<% if(user.loginid){ %>
+			<span class="fl">
+				<span class="mr10"><%= user.loginname %></span>
+			</span>
+			<a class="fr" href="/">首页</a>
+			<% } %>
+		</section>
 		<section  class="container">
-			<div class="head-op clearfix">
-				<% if(user.loginid){ %>
-				<span class="fl">
-					<span class="mr10"><%= user.loginname %></span>
-				</span>
-				<a class="fr" href="/">首页</a>
-				<% } %>
-			</div>
 			<% if(user.loginid == user.userid){ %>
 			<ul class="record-list">
 				<% user.records.forEach(function(record){ %>

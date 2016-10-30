@@ -5,6 +5,7 @@ var sizeRate = document.documentElement.clientWidth / 375.0 * 100;
 function indexInit(){
     $('html').css('font-size',sizeRate);
     submitRecord();
+    selectMusic();
 }
 
 function submitRecord(){
@@ -89,6 +90,35 @@ function checkArticle(article){
 	}
 
 	return true;
+}
+
+
+/**
+ * 查看音乐列表并选择音乐
+ */
+function selectMusic(){
+	$('.show-music').click(function(){
+		$('.music-box').show();
+		$('.alertMain').addClass('scale');
+	});
+
+	$('.music-sg a').click(function(){
+		var musicName = $(this).text();
+		var musicid = $(this).attr('data-music');
+		$('.music-selected').html(musicName).attr('data-music',musicid);
+		$('.delete-music').show();
+	});
+
+	$('.delete-music').click(function(){
+		confirmAlert({
+			msg:'确定删除背景音乐吗？',
+			sureFunc:function(){
+				$('.music-selected').html('无');
+				$('.delete-music').hide();
+				$('.confirm').remove();
+			}
+		});
+	});
 }
 
 $(document).ready(function(){

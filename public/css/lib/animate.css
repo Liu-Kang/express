@@ -1,0 +1,40 @@
+@keyframes scale
+{
+	0% {
+		transform:scale(0);
+	}
+	100% {
+		transform:scale(1);
+	}
+}
+
+@-moz-keyframes scale
+{
+	0% {
+		-moz-transform:scale(0);
+	}
+	100% {
+		-moz-transform:scale(1);
+	}
+}
+
+@-webkit-keyframes scale
+{
+	0% {
+		-webkit-transform:scale(1);
+	}
+	100% {
+		-webkit-transform:scale(0);
+	}
+}
+.scale{
+	animation-name: scale;
+ 	animation-duration: 1s;
+ 	animation-direction: alternate;
+ 	animation-timing-function: ease-in-out;
+
+ 	-webkit-animation-name: scale;
+ 	-webkit-animation-duration: 1s;
+ 	-webkit-animation-direction: alternate;
+ 	-webkit-animation-timing-function: ease-in-out;
+}

@@ -12,7 +12,7 @@ html{
 body{
 	width: 100%;
 	height: 100%;
-	color: #333;
+	color: #FFF;
 	font-size: 0.16rem;
 	font-family: Arial,'Microsoft YaHei'!important;
 	overflow-x: hidden;
@@ -20,20 +20,24 @@ body{
 ol,ul{
     list-style:none;
 }
-a{text-decoration: none;color: #333;}
+a{text-decoration: none;color: #FFF;}
 .container{
 	width: 94%;
     min-height: 100%;
 	padding: 0 3%;
     z-index: 9;
     position: relative;
-    background: url(../img/bg6.jpg) repeat;
-    background-size: contain;
+    overflow: hidden;
 }
 .head-op{
     height: 0.50rem;
     line-height: 0.50rem;
-    padding: 0 0.15rem;
+    padding: 0 3%;
+    width: 94%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 199;
 }
 .pagebg{
     position: absolute;
@@ -69,8 +73,10 @@ a{text-decoration: none;color: #333;}
 .mb20{margin-bottom: 0.2rem !important;}
 .mb30{margin-bottom: 0.3rem !important;}
 .mb40{margin-bottom: 0.4rem !important;}
+.mt50{margin-top: 0.50rem !important;}
 .ofh{overflow: hidden !important;}
 .bluetext{color: #225fba !important;}
+.redtext{color:#EF4F4F !important;}
 .cfff{color: #fff !important;}
 .c999{color: #999 !important;}
 .fl{float: left !important;}
@@ -92,7 +98,7 @@ a{text-decoration: none;color: #333;}
     border-radius: 3px;
     font-size: .16rem;
     color: #fff;
-    background-color: #EF4F4F;
+    background-color: #bbb;
 }
 .flexbox{
 	padding: 10px 15px;
@@ -128,6 +134,13 @@ input[type="text"],input[type="password"]{
     height: 0.4rem;
     line-height: 0.4rem;
     font-size: 0.16rem;
+    color: #fff;
+}
+textarea{
+    color: #fff;
+    border: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
 }
 .empty{
     text-align: center;
@@ -161,4 +174,64 @@ input[type="text"],input[type="password"]{
     background-color: #000;
     opacity: .8;
     border-radius: 10px;
+}
+.alert,.confirm{
+    z-index: 499;
+    display: none;
+}
+.alert .alertBg,.confirm .confirmBg{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0.6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 499;
+}
+.alert .alertMain,.confirm .confirmMain{
+    position: fixed;
+    width: 80%;
+    left: 10%;
+    top: 50%;
+    z-index: 1001;
+    background-color: #f5f5f5;
+    color: #333 !important;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.confirm .confirmMain{
+    margin-top: -0.65rem;
+}
+.alert .alertMain a,.confirm .confirmMain a{
+    color: #333 !important;
+}
+.confirm .confirm-text{
+    height: 0.80rem;
+    line-height: 0.80rem;
+    font-size: 0.18rem;
+    border-bottom: 1px solid #ddd;
+}
+.confirm .confirm-cancel{
+    display: block;
+    text-align: center;
+    width: 50%;
+    height: 0.50rem;
+    line-height: 0.50rem;
+    position: relative;
+}
+.confirm .confirm-cancel:after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border-right: 1px solid #ddd;
+}
+.confirm .confirm-sure{
+    display: block;
+    text-align: center;
+    width: 50%;
+    height: 0.50rem;
+    line-height: 0.50rem;
 }

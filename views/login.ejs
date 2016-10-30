@@ -3,10 +3,11 @@
 	<%- include head %>
 	<link rel="stylesheet" href="/css/main.css" />
 	<body>
+		<%- include ./module/snow %>
+		<section class="head-op clearfix">
+			<a href="/" class="fl">主页</a>
+		</section>
 		<section class="container">
-			<div class="head-op clearfix">
-				<a href="/" class="fl bluetext">主页</a>
-			</div>
 			<div id="loginForm">
 				<div class="input-list">
 					<div class="flexbox input-sg">
@@ -25,7 +26,7 @@
 		        <div class="ofh por tac submit-box">
 		        	<div class="redtext error-msg hide" id="error"></div>
 	            	<a href="javascript:;" id="loginSubmit" class="btn mt40">登&nbsp;录</a>
-	            	<p class="mt20">没有账号？<a href="<%= regUrl %>" class="bluetext">注册</a></p>
+	            	<p class="mt20">没有账号？<a href="<%= regUrl %>" class="redtext">注册</a></p>
 		        </div>
 			</div>
 		</section>

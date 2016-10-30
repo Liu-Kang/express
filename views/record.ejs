@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<%- include head %>
+	<head>
+		<title><%= title %></title>
+		<meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width,initial-scale=0,user-scalable=0">
+	    <meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-touch-fullscreen" content="YES" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta name="screen-orientation" content="portrait">
+	    <meta name="x5-orientation" content="portrait">
+		<link rel="stylesheet" href="/css/base.css" />
+		<script type="text/javascript" src="/js/lib/zepto.min.js"></script>
+	    <script type="text/javascript" src="/js/common.js"></script>
+	</head>
 	<link rel="stylesheet" href="/css/record.css" />
 	<body>
-		<canvas class="pagebg" id="index-canvas" width="100%" height="100%"></canvas>
-		<section  class="container">
-			<div class="head-op clearfix">
-				<% if(user.userid){ %>
-				<span class="fl">
-					<span class="mr10"><%= user.username %></span>
-				</span>
-				<a class="fr" href="/">首页</a>
+		<section class="container">
+			<% page.forEach(function(page){ %>
+			<section class="page">
+				<% if(page.dynamic || page.dynamic == 0){ %>
+					<% var bg = pageSetting.dynamic[page.dynamic] %>
+					<% if(bg == 'snow'){ %>
+						<%- include ./module/snow %>
+					<% } %>
+					<% if(bg == 'font'){ %>
+						<%- include ./module/font %>
+					<% } %>
+					<% if(bg == 'rose'){ %>
+						<%- include ./module/rose %>
+					<% } %>
+					<% if(bg == 'star'){ %>
+						<%- include ./module/star %>
+					<% } %>
+					<% if(bg == 'neon'){ %>
+						<%- include ./module/neon %>
+					<% } %>
 				<% } %>
-			</div>
-			<div class="ellipsis title"><%= record.title %></div>
-			<div class="article"><%= record.article %></div>
+			</section>
+			<% }); %>
 		</section>
 	</body>
 </html>

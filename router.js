@@ -4,11 +4,12 @@ module.exports = function(app){
 	var login = require('./routes/login');
 	var user = require('./routes/user');
 	var record = require('./routes/record');
+	var edit = require('./routes/edit');
 
 	index(app);
 	regist(app);
 	login(app);
 	user(app);
 	record(app);
-
+	edit(app);
 }

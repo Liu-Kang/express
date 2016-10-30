@@ -3,11 +3,12 @@
 	<%- include head %>
 	<link rel="stylesheet" href="/css/main.css" />
 	<body>
+		<%- include ./module/snow %>
+		<section class="head-op clearfix">
+			<a href="/" class="fl cfff">主页</a>
+			<a href="<%= loginUrl %>" class="fr cfff">登录</a>
+		</section>
 		<section class="container">
-			<div class="head-op clearfix">
-				<a href="/" class="fl bluetext">主页</a>
-				<a href="<%= loginUrl %>" class="fr bluetext">登录</a>
-			</div>
 			<div id="regForm">
 				<div class="input-list">
 					<div class="flexbox input-sg">

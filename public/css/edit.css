@@ -12,15 +12,53 @@
 	line-height: 0.50rem;
 	border-radius: 0;
 }
-.edit-form input,.edit-form textarea{
+.edit-form input{
 	width: 100%;
 	border: 0;
-	border-top: 1px solid #e5e5e5;
-	background-color: #f5f5f5;
 	padding: 5px 0;
 }
-.edit-form textarea{
-	height: 1.20rem;
-	resize:none;
-	overflow-y:hidden;
+.edit-sg{
+	margin-bottom: 0.20rem;
+	padding-bottom: 0.10rem;
+	border-bottom: 1px solid #bbb;
+}
+.alertMain{
+	height: 1.50rem;
+	margin-top: -0.75rem;
+	overflow-y: auto !important;
+}
+.music-list{
+	width: 94%;
+	margin: 0 auto;
+}
+.music-list a{
+	height: 0.30rem;
+	line-height: 0.30rem;
+	display: block;
+}
+.music-selected{
+	width: 1.6rem;
+}
+.page-title{
+	text-align: center;
+	margin-bottom: 0.20rem;
+}
+.edit-page-sg{
+	border-bottom: 1px solid #bbb;
+	padding-bottom: 0.20rem;
+}
+.edit-page-sg .edit-sg{
+	border-bottom: 0;
+}
+.bg-mod{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 299;
+}
+.bg-mod img{
+	width: 100%;
+	height: 100%;
 }

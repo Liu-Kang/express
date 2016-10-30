@@ -1,43 +1,108 @@
 <!DOCTYPE html>
 <html>
 	<%- include head %>
+	<link rel="stylesheet" href="/css/lib/animate.css" />
 	<link rel="stylesheet" href="/css/main.css" />
 	<link rel="stylesheet" href="/css/edit.css" />
 	<body>
+		<%- include ./module/snow %>
+		<section class="head-op clearfix">
+			<% if(user.userid){ %>
+			<span class="fl">
+				<span class="mr10"><%= user.username %></span>
+			</span>
+			<a class="fr" href="/user/<%= user.userid %>">我的主页</a>
+			<% }else{ %>
+			<span class="fr">
+				<a href="/login">登录</a>&nbsp;/&nbsp;<a href="/regist">注册</a>
+			</span>
+			<% } %>
+		</section>
 		<section class="container">
-			<div class="head-op clearfix">
-				<% if(user.userid){ %>
-				<span class="fl">
-					<span class="mr10"><%= user.username %></span>
-				</span>
-				<a class="fr" href="/user/<%= user.userid %>">我的主页</a>
-				<% }else{ %>
-				<span class="fr">
-					<a href="/login">登录</a>&nbsp;/&nbsp;<a href="/regist">注册</a>
-				</span>
-				<% } %>
-			</div>
-			<div class="edit-form">
-				<div class="input-list">
-					<div class="input-sg">
-		                <div class="input-tip">标题</div>
-		                <div class="input-box">
-		                    <input class="input" id="title" type="text">
-		                </div>
-		            </div>
-		            <div class="input-sg">
+			<div class="mt50 edit-form">
+				<div class="edit-sg edit-title">
+	                <div class="edit-tip">标题</div>
+	                <div class="input-box">
+	                    <input class="input" id="title" type="text">
+	                </div>
+		            <!-- <div class="input-sg">
 		                <div class="input-tip">正文</div>
 		                <div class="input-box">
 		                	<textarea class="textarea" id="article"></textarea>
 		                </div>
-		            </div>
+		            </div> -->
 	            </div>
-		        <div class="ofh por tac submit-box">
+	            <div class="edit-sg edit-music ">
+	            	<div class="edit-tip clearfix">
+	            		<span class="fl">设置背景音乐</span>
+	            		<a class="fr show-music" href="javascript:void(0);">查看音乐列表</a>
+	            	</div>
+	            	<div class="mt10 clearfix">
+	            		<span class="fl ellipsis music-selected" data-music="-1">无</span>
+	            		<a class="fr delete-music" href="javascript:void(0);" style="display:none;">删除音乐选择</a>
+	            	</div>
+	            </div>
+	            <div class="edit-page">
+	            	<div class="page-title">编辑：第&nbsp;<span class="page-num">1</span>&nbsp;页</div>
+	            	<ul class="edit-page-list">
+	            		<li class="edit-page-sg">
+				            <div class="edit-sg edit-bg ">
+				            	<div class="edit-tip clearfix">
+				            		<span class="fl">设置背景模板</span>
+				            		<a class="fr show-dynamic-bg" href="javascript:void(0);">查看动态模板</a>
+				            		<a class="fr mr10 show-static-bg" href="javascript:void(0);">查看静态模板</a>
+				            	</div>
+				            	<div class="mt10 clearfix">
+				            		<span class="fl bg-selected" data-bg="-1">无</span>
+				            		<a class="fr delete-music" href="javascript:void(0);" style="display:none;">删除模板选择</a>
+				            	</div>
+				            </div>
+				            <div class="mt20 tac page-change">
+				            	<a class="mr20" href="javascript:void(0);">保存</a>
+				            	<a href="javascript:void(0);">编辑下一页</a>
+				            </div>
+			            </li>
+		            </ul>
+		            
+		        </div>
+		        <!-- <div class="ofh por tac submit-box">
 		        	<div class="redtext error-msg hide" id="error"></div>
 	            	<a href="javascript:;" id="editSubmit" class="btn mt40" data-userid="<%= user.userid %>">完&nbsp;成</a>
-		        </div>
+		        </div> -->
+
+		        <ul class="edit-page-list">
+		        </ul>
+			</div>
+			<div class="alert music-box">
+				<div class="alertBg"></div>
+				<div class="alertMain">
+					<ul class="music-list">
+						<% music.forEach(function(music,index){%>
+						<li class="music-sg">
+							<a href="javascript:void(0);" data-music="<%= index %>"><%= music %></a>
+						</li>
+						<% }); %>
+					</ul>
+				</div>
 			</div>
 		</section>
+		<div class="bg-mod dynamic-mod">
+			<ul class="bg-mod-list">
+				<% dynamicbg.forEach(function(mod,index){ %>
+				<li class="bg-mod-sg" style="display:none;">
+					<a href="javascript:void(0);">模板<%= index + 1 %></a>
+				</li>
+				<% }); %>
+			</ul>
+			<iframe border="0" src="/record/18" frameborder="0" height="100%" width="100%"></iframe>
+		</div>
+		<div class="bg-mod static-mod" style="display:none;">
+			<ul class="bg-mod-list">
+				<li class="bg-mod-sg">
+
+				</li>
+			</ul>
+		</div>
 	</body>
 	<script type="text/javascript" src="/js/editMain.js"></script>
 </html>
