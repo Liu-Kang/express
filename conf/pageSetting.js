@@ -21,8 +21,8 @@ module.exports = {
 		'rotateLeft','rotateRight','typewriter'
 	],
 	//定义背景种类：static:静态背景；；dynamic:动态背景
-	static:['bg1','bg2','bg3','bg4','bg5','bg6','bg7'],
-	dynamic:['font','neon','rose','snow','star'],
+	staticBg:['bg1','bg2','bg3','bg4','bg5','bg6','bg7'],
+	dynamicBg:['neon','rose','snow','star'],
 	//设定背景音乐
 	music:[
 		'miss you finally.mp3',

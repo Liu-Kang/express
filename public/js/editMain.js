@@ -6,6 +6,7 @@ function indexInit(){
     $('html').css('font-size',sizeRate);
     submitRecord();
     selectMusic();
+    viewMod();
 }
 
 function submitRecord(){
@@ -118,6 +119,22 @@ function selectMusic(){
 				$('.confirm').remove();
 			}
 		});
+	});
+}
+
+/**
+ * 查看动态模板
+ */
+function viewMod(){
+	$('.bg-mod-sg').eq(0).addClass('selected');
+	$('.mod-view').click(function(){
+		if($(this).parent().hasClass('selected'));
+		var index = $(this).parent().attr('data-mod');
+		var iframe = parseInt(index) + 14;
+		$('.iframe-box .mod-iframe').remove();
+		$('.iframe-box').append('<iframe class="mod-iframe" border="0" src="/record/'+iframe+'" frameborder="0" height="100%" width="100%"></iframe>');
+		$('.bg-mod-sg').removeClass('selected');
+		$(this).parent().addClass('selected');
 	});
 }
 

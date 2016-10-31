@@ -3,4 +3,4 @@
 -- alter table record add COLUMN open int(1) default 1;
 -- delete from record where uid=36;
 -- alter table record drop COLUMN article;
-insert into record (uid,cdate,udate,title,page) values (0,now(),now(),'动态模板演示1','[{num:1,dynamic:1,text:["程心","我爱你","到永远"]}]');
+insert into record (uid,cdate,udate,title,page) values (0,now(),now(),'动态模板演示1','{"num":1,"dynamicBg":1,"text":"程心,我爱你,到永远"}');

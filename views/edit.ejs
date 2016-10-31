@@ -6,19 +6,19 @@
 	<link rel="stylesheet" href="/css/edit.css" />
 	<body>
 		<%- include ./module/snow %>
-		<section class="head-op clearfix">
-			<% if(user.userid){ %>
-			<span class="fl">
-				<span class="mr10"><%= user.username %></span>
-			</span>
-			<a class="fr" href="/user/<%= user.userid %>">我的主页</a>
-			<% }else{ %>
-			<span class="fr">
-				<a href="/login">登录</a>&nbsp;/&nbsp;<a href="/regist">注册</a>
-			</span>
-			<% } %>
-		</section>
 		<section class="container">
+			<div class="head-op clearfix">
+				<% if(user.userid){ %>
+				<span class="fl">
+					<span class="mr10"><%= user.username %></span>
+				</span>
+				<a class="fr" href="/user/<%= user.userid %>">我的主页</a>
+				<% }else{ %>
+				<span class="fr">
+					<a href="/login">登录</a>&nbsp;/&nbsp;<a href="/regist">注册</a>
+				</span>
+				<% } %>
+			</div>
 			<div class="mt50 edit-form">
 				<div class="edit-sg edit-title">
 	                <div class="edit-tip">标题</div>
@@ -87,14 +87,16 @@
 			</div>
 		</section>
 		<div class="bg-mod dynamic-mod">
-			<ul class="bg-mod-list">
+			<ul class="flexbox bg-mod-list">
 				<% dynamicbg.forEach(function(mod,index){ %>
-				<li class="bg-mod-sg" style="display:none;">
-					<a href="javascript:void(0);">模板<%= index + 1 %></a>
+				<li class="flex1 bg-mod-sg" data-mod="<%= index %>">
+					<a class="mod-view" href="javascript:void(0);">模板<%= index + 1 %></a>
 				</li>
 				<% }); %>
 			</ul>
-			<iframe border="0" src="/record/18" frameborder="0" height="100%" width="100%"></iframe>
+			<div class="iframe-box">
+				<iframe class="mod-iframe" border="0" src="/record/14" frameborder="0" height="100%" width="100%"></iframe>
+			</div>
 		</div>
 		<div class="bg-mod static-mod" style="display:none;">
 			<ul class="bg-mod-list">

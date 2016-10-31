@@ -23,8 +23,8 @@ function editAction(req,res,next){
   	 	title:'Edit',
   	 	user:user,
   	 	music:pageSetting.music,
-  	 	dynamicbg:pageSetting.dynamic,
-  	 	staticbg:pageSetting.static
+  	 	dynamicbg:pageSetting.dynamicBg,
+  	 	staticbg:pageSetting.staticBg
     });
 }
 

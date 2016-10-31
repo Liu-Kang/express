@@ -3,7 +3,7 @@
 	<head>
 		<title><%= title %></title>
 		<meta charset="utf-8" />
-	    <meta name="viewport" content="width=device-width,initial-scale=0,user-scalable=0">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 	    <meta name="format-detection" content="telephone=no" />
 	    <meta name="apple-touch-fullscreen" content="YES" />
 	    <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -17,28 +17,29 @@
 	<link rel="stylesheet" href="/css/record.css" />
 	<body>
 		<section class="container">
-			<% page.forEach(function(page){ %>
-			<section class="page">
-				<% if(page.dynamic || page.dynamic == 0){ %>
-					<% var bg = pageSetting.dynamic[page.dynamic] %>
-					<% if(bg == 'snow'){ %>
-						<%- include ./module/snow %>
-					<% } %>
-					<% if(bg == 'font'){ %>
-						<%- include ./module/font %>
-					<% } %>
-					<% if(bg == 'rose'){ %>
-						<%- include ./module/rose %>
-					<% } %>
-					<% if(bg == 'star'){ %>
-						<%- include ./module/star %>
-					<% } %>
-					<% if(bg == 'neon'){ %>
-						<%- include ./module/neon %>
-					<% } %>
+			<% if(page.dynamicBg || page.dynamicBg == 0){ %>
+				<section class="page">
+				<% var bg = pageSetting.dynamicBg[page.dynamicBg] %>
+				<% if(bg == 'snow'){ %>
+					<%- include ./module/snow %>
 				<% } %>
-			</section>
-			<% }); %>
+				<% if(bg == 'font'){ %>
+					<%- include ./module/font %>
+				<% } %>
+				<% if(bg == 'rose'){ %>
+					<%- include ./module/rose %>
+				<% } %>
+				<% if(bg == 'star'){ %>
+					<%- include ./module/star %>
+				<% } %>
+				<% if(bg == 'neon'){ %>
+					<%- include ./module/neon %>
+				<% } %>
+				</section>
+			<% }else if(page.staticBg || page.staticBg == 0){ %>
+				<section class="page" style="background:url(<%= pageSetting.staticBg[page.staticBg] %>) no-repeat;background-size:100% 100%;">
+				</section>
+			<% } %>
 		</section>
 	</body>
 </html>

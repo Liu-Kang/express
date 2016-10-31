@@ -2,7 +2,7 @@ var context;
 var arr = new Array();
 var starCount = 800;
 var rains = new Array();
-var rainCount =20;
+var rainCount = 3;
 
 $(document).ready(function(){
     //初始化画布及context
@@ -77,7 +77,7 @@ $(document).ready(function(){
             arr[n].draw();  
         }  
 
-        setTimeout(playStars,100);
+        setTimeout(playStars,300);
     }
 
     /*流星雨开始*/
@@ -100,10 +100,10 @@ $(document).ready(function(){
             this.alpha = 1;//透明度
             this.getRandomColor();
             //最小长度，最大长度
-            var x = Math.random() * 80 + 150;
+            var x = Math.random() * 60 + 150;
             this.length = Math.ceil(x);
             this.angle = 30; //流星倾斜角
-            x = Math.random()+0.5;
+            x = Math.random()+0.3;
             this.speed = Math.ceil(x); //流星的速度
             var cos = Math.cos(this.angle*3.14/180);
             var sin = Math.sin(this.angle*3.14/180) ;
@@ -137,14 +137,14 @@ $(document).ready(function(){
            
             this.x = Math.random() * window.innerWidth; //窗口高度
             //纵坐标小于600
-            this.y = Math.random() * window.innerHeight;  //窗口宽度
+            this.y = Math.random() * window.innerHeight / 4;  //窗口宽度
         }
          /****绘制流星***************************/
         this.draw = function () //绘制一个流星的函数
         {
             context.save();
             context.beginPath();
-            context.lineWidth = 1; //宽度
+            context.lineWidth = 0.2; //宽度
             context.globalAlpha = this.alpha; //设置透明度
             //创建横向渐变颜色,起点坐标至终点坐标
             var line = context.createLinearGradient(this.x, this.y, 
