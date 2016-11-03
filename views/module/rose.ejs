@@ -3,6 +3,9 @@
 a,img{border:0;}
 body{font:12px/180% Arial, Helvetica, sans-serif;}
 </style>
+<% if(dynamicbg && dynamicbg.length > 0){ %>
+<%- include('modTab',{dynamicbg:dynamicbg,select:1}); %>
+<% } %>
 <canvas id="sakura"></canvas>
 <!-- sakura shader -->
 <script id="sakura_point_vsh" type="x-shader/x_vertex">
