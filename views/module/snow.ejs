@@ -21,13 +21,13 @@
       opacity: 0.5;
     }
 </style>
-<script type="text/javascript" src="/js/lib/snow.js"></script>
-<% if(dynamicbg && dynamicbg.length > 0){ %>
-<%- include('module/modTab',{dynamicbg:dynamicbg,select:3}); %>
+<% var dynamicbg = dynamicbg || []; if(dynamicbg && dynamicbg.length > 0){ %>
+<%- include('modTab',{dynamicbg:dynamicbg,select:3}); %>
 <% } %>
 <canvas width="100%" height="100%" class="flare"></canvas>
 <canvas width="100%" height="100%" class="snow"></canvas>
 <canvas width="100%" height="100%" class="flake"></canvas>
+<script type="text/javascript" src="/js/lib/snow.js"></script>
 <script>
 	  $(document).ready( function() {
 	     $('canvas.flare').let_it_snow({
@@ -42,7 +42,7 @@
   	    $('canvas.snow').let_it_snow({
     	      windPower: 2,
     	      speed: 1,
-    	      count: 200,
+    	      count: 280,
     	      size: 0,
     	  });
 	  });
