@@ -1,4 +1,7 @@
 @charset "utf-8";
+.edit-container{
+	padding-bottom: 0.40rem;
+}
 .bottom-btn{
 	position: fixed;
 	bottom: 0;
@@ -13,25 +16,33 @@
 	border-radius: 0;
 }
 .edit-form input{
-	width: 100%;
+	width: 90%;
 	border: 0;
 	padding: 5px 0;
+	margin-top: 0.10rem;
+	border-left: 2px solid #EF4F4F;
+	height: 0.24rem;
+	line-height: 0.24rem;
+	padding-left: 0.10rem;
 }
 .edit-sg{
 	margin-bottom: 0.20rem;
-	padding-bottom: 0.10rem;
+	padding-bottom: 0.20rem;
 	border-bottom: 1px solid #bbb;
+}
+.edit-tip{
+	color: #bbb;
 }
 .alertMain{
 	height: 1.50rem;
 	margin-top: -0.75rem;
 	overflow-y: auto !important;
 }
-.music-list{
+.music-list,.font-list{
 	width: 94%;
 	margin: 0 auto;
 }
-.music-list a{
+.music-list a,.font-list a{
 	height: 0.30rem;
 	line-height: 0.30rem;
 	display: block;
@@ -41,6 +52,9 @@
 }
 .page-title{
 	text-align: center;
+	margin-bottom: 0.20rem;
+}
+.edit-page{
 	margin-bottom: 0.20rem;
 }
 .edit-page-sg{
@@ -65,4 +79,45 @@
 .iframe-box{
 	width: 100%;
 	height: 100%;
+}
+
+.choose{
+	background-color: #fff;
+	opacity: 0.7;
+	color: #323232;
+	padding: 0.15rem 0.10rem;
+	border-radius: 8px;
+}
+.choose a{
+	color: #323232;
+}
+.edit-operation{
+	width: 100%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: 0.40rem;
+	line-height: 0.40rem;
+	background-color: #fff;
+	opacity: 0.7;
+	color: #323232;
+}
+.edit-operation a{
+	color: #fff;
+	text-align: center;
+}
+.edit-content .content-sg{
+	margin-top: 0.20rem;
+}
+.edit-content textarea{
+	width: 90%;
+	height: 0.85rem;
+	padding: 5px 0;
+	margin-top: 0.10rem;
+	border-left: 2px solid #EF4F4F;
+	padding-left: 0.10rem;
+}
+.font-set-main{
+	height: 3.00rem;
+    margin-top: -1.75rem;
 }

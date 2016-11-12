@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="/css/edit.css" />
 	<body>
 		<%- include ./module/snow %>
-		<section class="container">
+		<section class="container edit-container">
 			<div class="head-op clearfix">
 				<% if(user.userid){ %>
 				<span class="fl">
@@ -19,59 +19,82 @@
 				</span>
 				<% } %>
 			</div>
-			<div class="mt50 edit-form">
+			<div class="mt20 edit-form">
 				<div class="edit-sg edit-title">
 	                <div class="edit-tip">标题</div>
 	                <div class="input-box">
 	                    <input class="input" id="title" type="text">
 	                </div>
-		            <!-- <div class="input-sg">
-		                <div class="input-tip">正文</div>
-		                <div class="input-box">
-		                	<textarea class="textarea" id="article"></textarea>
-		                </div>
-		            </div> -->
 	            </div>
 	            <div class="edit-sg edit-music ">
 	            	<div class="edit-tip clearfix">
 	            		<span class="fl">设置背景音乐</span>
-	            		<a class="fr show-music" href="javascript:void(0);">查看音乐列表</a>
+	            		<a class="fr redtext show-music" href="javascript:void(0);">查看音乐列表</a>
 	            	</div>
-	            	<div class="mt10 clearfix">
+	            	<div class="mt10 clearfix choose">
 	            		<span class="fl ellipsis music-selected" data-music="-1">无</span>
 	            		<a class="fr delete-music" href="javascript:void(0);" style="display:none;">删除音乐选择</a>
 	            	</div>
 	            </div>
-	            <div class="edit-page">
-	            	<div class="page-title">编辑：第&nbsp;<span class="page-num">1</span>&nbsp;页</div>
-	            	<ul class="edit-page-list">
-	            		<li class="edit-page-sg">
-				            <div class="edit-sg edit-bg ">
+	            <% if(type == 'static'){ %>
+	            	<div class="edit-page edit-page-static">
+		            	<div class="page-title">编辑：第&nbsp;<span class="page-num">1</span>&nbsp;页</div>
+		            	<ul class="edit-page-list">
+		            		<li class="edit-page-sg">
+					            <div class="edit-sg edit-bg ">
+					            	<div class="edit-tip clearfix">
+					            		<span class="fl">设置背景模板</span>
+					            		<a class="fr redtext show-static-bg" href="javascript:void(0);">查看模板</a>
+					            	</div>
+					            	<div class="mt10 clearfix choose">
+					            		<span class="fl bg-selected" data-bg="-1">无</span>
+					            		<a class="fr delete-bg" href="javascript:void(0);" style="display:none;">删除模板选择</a>
+					            	</div>
+					            </div>
+					            <div class="mt20 tac page-change">
+					            	<a class="mr20 save-static" href="javascript:void(0);">保存</a>
+					            	<a href="javascript:void(0);">编辑下一页</a>
+					            </div>
+				            </li>
+			            </ul>
+		        	</div>
+		        <% }else if(type == 'dynamic'){ %>
+		        	<div class="edit-page edit-page-dynamic">
+	            		<div class="edit-page-sg">
+				            <div class="edit-bg ">
 				            	<div class="edit-tip clearfix">
 				            		<span class="fl">设置背景模板</span>
-				            		<a class="fr show-dynamic-bg" href="javascript:void(0);">查看动态模板</a>
-				            		<a class="fr mr10 show-static-bg" href="javascript:void(0);">查看静态模板</a>
+				            		<a class="fr redtext show-dynamic-bg" href="javascript:void(0);">查看模板</a>
 				            	</div>
-				            	<div class="mt10 clearfix">
+				            	<div class="mt10 clearfix choose">
 				            		<span class="fl bg-selected" data-bg="-1">无</span>
-				            		<a class="fr delete-music" href="javascript:void(0);" style="display:none;">删除模板选择</a>
+				            		<a class="fr delete-bg" href="javascript:void(0);" style="display:none;">删除模板选择</a>
 				            	</div>
 				            </div>
-				            <div class="mt20 tac page-change">
-				            	<a class="mr20" href="javascript:void(0);">保存</a>
-				            	<a href="javascript:void(0);">编辑下一页</a>
-				            </div>
-			            </li>
-		            </ul>
-		            
+			            </div>
+			        </div>
+		        <% } %>
+		        <div class="edit-sg edit-content">
+	                <div class="edit-tip">你想对TA说什么</div>
+	                <div class="content-box">
+	                	<ul class="content-list">
+	                		<li class="content-sg" data-animate="0">
+	                			<div class="tac">
+	                				<span class="mr10">第1段</span>
+	                				<a class="cfff set-content-animation" href="javascript:void(0);">设置动画</a>
+	                			</div>
+	                			<textarea class="mt10 textarea content0"></textarea>
+	                		</li>
+	                	</ul>
+	                	<div class="tac mt20">
+	                		<a class="mt20 cfff" id="add-content" href="javascript:void(0);">编辑下一段话</a>
+	                	</div>
+	                </div>
+	            </div>
+		        <div class="bgred flexbox edit-operation">
+		        	<a class="flex1" href="javascript:void(0);" id="exit">不保存</a>
+		        	<a class="flex1" href="javascript:void(0);" data-userid="<%= user.userid %>" id="save">保存</a>
 		        </div>
-		        <!-- <div class="ofh por tac submit-box">
-		        	<div class="redtext error-msg hide" id="error"></div>
-	            	<a href="javascript:;" id="editSubmit" class="btn mt40" data-userid="<%= user.userid %>">完&nbsp;成</a>
-		        </div> -->
-
-		        <ul class="edit-page-list">
-		        </ul>
 			</div>
 			<div class="alert music-box">
 				<div class="alertBg"></div>
@@ -85,16 +108,27 @@
 					</ul>
 				</div>
 			</div>
+			<div class="alert font-box">
+				<div class="alertBg"></div>
+				<div class="alertMain font-set-main">
+					<ul class="font-list">
+						<% animate.forEach(function(animate,index){%>
+						<li class="font-sg">
+							<a href="javascript:void(0);" data-font="<%= index %>"><%= animate %></a>
+						</li>
+						<% }); %>
+					</ul>
+				</div>
+			</div>
 		</section>
 		<div class="bg-mod dynamic-mod" style="display:none;">
 			<div class="iframe-box">
-				<iframe class="mod-iframe" border="0" src="/record/14" frameborder="0" height="100%" width="100%"></iframe>
+				<iframe class="mod-iframe" border="0" src="" frameborder="0" height="100%" width="100%"></iframe>
 			</div>
 		</div>
 		<div class="bg-mod static-mod" style="display:none;">
 			<ul class="bg-mod-list">
 				<li class="bg-mod-sg">
-
 				</li>
 			</ul>
 		</div>

@@ -42,6 +42,8 @@ a{text-decoration: none;color: #FFF;}
 .z9{z-index: 9!important;}
 .z99{z-index: 99!important;}
 .z999{z-index: 999!important;}
+.opa{opacity: 0.7 !important;}
+.bgred{background-color:#EF4F4F !important; }
 .bgwhite{background-color: #fff !important;}
 .bggray{background-color: #f5f5f5 !important;}
 .bt1{border-top: 1px solid #e5e5e5 !important;}
@@ -95,7 +97,6 @@ a{text-decoration: none;color: #FFF;}
     background-color: #bbb;
 }
 .flexbox{
-	padding: 10px 15px;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
@@ -133,8 +134,10 @@ input[type="text"],input[type="password"]{
 textarea{
     color: #fff;
     border: 0;
+    outline: 0;
     -webkit-appearance: none;
     background-color: transparent;
+    resize: none;
 }
 .empty{
     text-align: center;
@@ -196,6 +199,12 @@ textarea{
 }
 .confirm .confirmMain{
     margin-top: -0.65rem;
+}
+.alert li{
+    border-top: 1px solid #eee;
+}
+.alert li:first-child{
+    border-top: 0;
 }
 .alert .alertMain a,.confirm .confirmMain a{
     color: #333 !important;

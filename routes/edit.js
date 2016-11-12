@@ -2,7 +2,7 @@ var Record = require('../models/record');
 var pageSetting = require('../conf/pageSetting');
 
 module.exports = function(app){
-	app.get('/edit',editAction);
+	app.get('/edit/:type',editAction);
 	app.all('/edit/submitRecord',editRecord);
 }
 
@@ -23,8 +23,10 @@ function editAction(req,res,next){
   	 	title:'Edit',
   	 	user:user,
   	 	music:pageSetting.music,
+  	 	type:req.params.type,
   	 	dynamicbg:pageSetting.dynamicBg,
-  	 	staticbg:pageSetting.staticBg
+  	 	staticbg:pageSetting.staticBg,
+  	 	animate:pageSetting.animate
     });
 }
 

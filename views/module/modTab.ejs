@@ -3,7 +3,7 @@
 		position: absolute;
 		width: 90%;
 		left: 5%;
-		top: 0.50rem;
+		bottom: 0.50rem;
 		color: #333;
 		text-align: center;
 		padding: 0;
@@ -30,11 +30,47 @@
 		height: 100%;
 		width: 100%;
 	}
+	.mod-op{
+		width: 70%;
+		position: absolute;
+		bottom: 0.10rem;
+		left: 15%;
+		z-index: 99;
+	}
+	.mod-op a{
+		display: block;
+		width: 40%;
+		text-align: center;
+		color: #98030D;
+		font-size: 0.18rem;
+		height: 0.30rem;
+		line-height: 0.30rem;
+		text-decoration: none;
+		background-color: #fff;
+		opacity: 0.7;
+		border-radius: 8px;
+	}
 </style>
 <ul class="flexbox bg-mod-list">
-	<% var recordUrl = 14; dynamicbg.forEach(function(mod,index){ %>
-	<li class="flex1 bg-mod-sg <% if(index + 1 == select){ %>selected<% } %>" data-mod="<%= index %>">
+	<% var recordUrl = 23; dynamicbg.forEach(function(mod,index){ %>
+	<li class="flex1 bg-mod-sg <% if(index + 1 == select){ %>selected<% } %>" data-mod="<%= index %>" data-modname="<%= dynamicbg[index] %>">
 		<a class="mod-view" href="/record/<%= recordUrl %>">模板<%= index + 1 %></a>
 	</li>
 	<% recordUrl ++ ; });  %>
 </ul>
+<div class="mod-op clearfix">
+	<a id="mod-cancel" class="fl" href="javascript:void(0);">取消</a>
+	<a id="mod-sure" class="fr" href="javascript:void(0);">使用</a>
+</div>
+<script>
+	$(document).ready(function(){
+		$('#mod-cancel').click(function(){
+			parent.closeIframe();
+		});
+		$('#mod-sure').click(function(){
+			var mod = $('.bg-mod-sg.selected').attr('data-mod');
+			var modname = $('.bg-mod-sg.selected').attr('data-modname');
+			parent.chooseMod(mod,modname);
+		});
+	});
+</script>

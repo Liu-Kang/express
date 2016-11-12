@@ -1,24 +1,16 @@
 // 数据库page字段
-// [
-// 	{
-// 		num:1,
-// 		static:1,
-// 		text:['xxx','xxxx','xxx']
-// 	},
-// 	{
-// 		num:2,
-// 		dynamic:2,
-// 		text:['xxx','xxxx','xxx']
-// 	},
-// 	...
-// ]
+// {
+// 		"num":1,
+// 		"dynamicBg":0,
+// 		"text":'xxxxx&&xxx,xx?xx!xxxxx&&xxx' //即通过&&进行分割
+// }
 
 module.exports = {
 	//定义动画种类
 	animate:[
-		'fade','scale','fadeScale','slideLeft',
+		'typewriter','fade','scale','fadeScale','slideLeft',
 		'slideRight','slideTop','slideBottom','rotate',
-		'rotateLeft','rotateRight','typewriter'
+		'rotateLeft','rotateRight'
 	],
 	//定义背景种类：static:静态背景；；dynamic:动态背景
 	staticBg:['bg1','bg2','bg3','bg4','bg5','bg6','bg7'],
