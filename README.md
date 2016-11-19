@@ -15,7 +15,11 @@
     npm install supervisor -g  //代码调试利器
     安装完成之后输入 express -V 验证express是否安装成功
 ###2.建表，使用mysql数据库
+
 ```SQL
+//创建express数据库
+CREATE DATABASE express;
+
 //创建用户表
 CREATE TABLE IF NOT EXISTS user(
 	id INT(10) AUTO_INCREMENT,
@@ -39,4 +43,7 @@ CREATE TABLE IF NOT EXISTS record2(
 	PRIMARY KEY(rid)
 )ENGINE=INNODB DEFAULT CHARSET = UTF8;
 ```
-###3.完成之后进入项目根目录，在控制台输入 supervisor ./bin/www , 在浏览器端输入localhost:3000即可进入页面
+###3.修改mysql配置
+	进入conf目录下的config.js，修改用户名和密码
+###4.打开页面
+	进入项目根目录，在控制台输入 supervisor ./bin/www , 在浏览器端输入localhost:3000即可进入页面
