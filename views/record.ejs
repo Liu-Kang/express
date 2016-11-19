@@ -2,17 +2,22 @@
 <html>
 	<%- include head %>
 	<link rel="stylesheet" href="/css/record.css" />
+	<link rel="stylesheet" href="/js/lib/record.js" />
 	<body>
-		<section class="container">
-			<% if(page.dynamicBg || page.dynamicBg == 0){ %>
+		<section class="container"">
+			<% var page = JSON.parse(record.page); %>
+			<% if( !isNaN(page.dynamicBg) ){ %>
 				<section class="page">
 				<% var bg = pageSetting.dynamicBg[page.dynamicBg] %>
-				<%- include('module/' + bg , {dynamicbg:pageSetting.dynamicBg}); %>
+				<%- include('module/' + bg , {dynamicbg:pageSetting.dynamicBg,rid:record.rid}); %>
 				</section>
-			<% }else if(page.staticBg || page.staticBg == 0){ %>
+			<% }else if( !isNaN(page.staticBg) ){ %>
 				<section class="page" style="background:url(<%= pageSetting.staticBg[page.staticBg] %>) no-repeat;background-size:100% 100%;">
 				</section>
 			<% } %>
+			<section class="content-box">
+				<div><%= page.content %></div>
+			</section>
 		</section>
 	</body>
 </html>

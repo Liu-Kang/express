@@ -35,10 +35,22 @@ function editAction(req,res,next){
  */
 function editRecord(req,res,next){
 	var data = req.method == 'GET' ? req.query : req.body;
+	var page = {
+		"content":data.content,
+		"animation":data.animation
+	};
+
+	if(data.bgType == 'dynamic'){
+		page["dynamicBg"] = data.bg;
+	}else{
+		page["staticBg"] = data.bg;
+	}
+
 	var param = {
 		userid:data.userid,
 		title:data.title,
-		article:data.article
+		music:data.music,
+		page:JSON.stringify(page)
 	};
 
 	if(!req.cookies.user){
@@ -53,6 +65,6 @@ function editRecord(req,res,next){
 		return res.json({
 			errorCode:0,
 			errorMsg:'编辑成功'
-		})
+		});
 	});
 }

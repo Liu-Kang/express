@@ -163,14 +163,11 @@ function editResultOperation(){
 			animation:animation
 		};
 
-		console.log(oData);
-		return;
-
 		$tgt.attr('data-ajax',1);
 		$.ajax({
             url:'/edit/submitRecord/',
             data:oData,
-            type:'get',
+            type:'POST',
             dataType:'json',
             success:function(result){
                 if(result.errorCode === 0){

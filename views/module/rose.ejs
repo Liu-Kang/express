@@ -3,8 +3,9 @@
 a,img{border:0;}
 body{font:12px/180% Arial, Helvetica, sans-serif;}
 </style>
-<% var dynamicbg = dynamicbg || [];if(dynamicbg && dynamicbg.length > 0){ %>
-<%- include('modTab',{dynamicbg:dynamicbg,select:2}); %>
+<% if( rid >= 23 && rid <= 26 ){ %>
+  <% var dynamicbg = dynamicbg || []; %>
+  <%- include('modTab',{dynamicbg:dynamicbg,select:2}); %>
 <% } %>
 <canvas id="sakura"></canvas>
 <!-- sakura shader -->

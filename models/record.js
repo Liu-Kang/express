@@ -3,10 +3,7 @@ var config = require('../conf/config');
 
 var pool = mysql.createPool(config.mysql);
 
-function Record(record){
-	var record = record || {};
-	this.rid = record.rid;
-}
+function Record(record){}
 
 module.exports = Record;
 
@@ -18,8 +15,8 @@ module.exports = Record;
 Record.prototype.insertRecordByUserid = function(record,callback){
 	pool.getConnection(function(err,connection){
 		connection.query(
-			'insert into record (uid,cdate,udate,title,article) values (?,now(),now(),?,?)',
-			[record.userid,record.title,record.article],
+			'insert into record (uid,cdate,udate,title,page,music,open) values (?,now(),now(),?,?,?,1)',
+			[record.userid,record.title,record.page,record.music],
 			function(err,result){
 				if(err) throw err;
 

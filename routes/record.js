@@ -16,10 +16,10 @@ function recordAction(req,res,next){
 	var record = new Record();
 	record.getRecordByRid(req.params.recordid,function(result){
 		if(result.length > 0){
+			var data = result[0];
 			res.render('record',{
-		  	 	title:result[0].title,
-		  	 	record:result[0],
-		  	 	page:JSON.parse(result[0].page),
+		  	 	title:data.title,
+		  	 	record:data,
 		  	 	pageSetting:pageSetting
 		    });
 		}
