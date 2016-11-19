@@ -39,10 +39,10 @@
 	font-weight:600;
 	font-family: '-webkit-body';
 	overflow-y: auto;
+	letter-spacing: 4px;
 }
 .content-main{
 	padding-top: 0.80rem;
-	overflow: hidden;
 	position: relative;
 }
 .ad-box{
@@ -50,7 +50,7 @@
 	height: 50px;
 	line-height: 50px;
 	position: fixed;
-	top: -50px;
+	bottom: -50px;
 	z-index: 999;
 	text-align: center;
 }

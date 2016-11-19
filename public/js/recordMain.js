@@ -15,7 +15,7 @@ Animate.prototype.typewriter = function(text,callback){
     var $type = $('<div class="text text-type" style="display:block;">' + text + '</div>');
     $type.css({
         'width':'90%',
-        'margin':'0.30rem auto'
+        'margin':'0.15rem auto'
     });
     $type.appendTo('.content-main');
     $type.each(function() {
@@ -48,7 +48,7 @@ Animate.prototype.fade = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         'opacity':'0'
     }).show();
      $fade.css({
@@ -67,7 +67,7 @@ Animate.prototype.scale = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'scale(0)'
     }).show();
     $fade.css({
@@ -86,7 +86,7 @@ Animate.prototype.slideLeft = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'translateX(-500px)'
     }).show();
     $fade.css({
@@ -105,7 +105,7 @@ Animate.prototype.slideRight = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'translateX(500px)'
     }).show();
     $fade.css({
@@ -124,7 +124,7 @@ Animate.prototype.slideTop = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'translateY(-800px)'
     }).show();
     $fade.css({
@@ -143,7 +143,7 @@ Animate.prototype.slideBottom = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'translateY(800px)'
     }).show();
     $fade.css({
@@ -162,7 +162,7 @@ Animate.prototype.rotate = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'rotate(360deg) scale(0.2)'
     }).show();
     $fade.css({
@@ -181,7 +181,7 @@ Animate.prototype.rotateLeft = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'translateX(-300px) rotate(-100deg) scale(0.2)'
     }).show();
     $fade.css({
@@ -200,7 +200,7 @@ Animate.prototype.rotateRight = function(text,callback){
     $fade.appendTo('.content-main');
     $fade.css({
         'width':'90%',
-        'margin':'0.30rem auto',
+        'margin':'0.15rem auto',
         '-webkit-transform':'translateX(300px) rotate(100deg) scale(0.2)'
     }).show();
     $fade.css({
@@ -276,9 +276,9 @@ function goHomePage(){
     window.setTimeout(function(){
         $('.ad-box').css({
             '-webkit-transition':'-webkit-transform 500ms ease-in-out',
-            '-webkit-transform':'translateY(50px)'
+            '-webkit-transform':'translateY(-50px)'
         });
-    },2000);
+    },8000);
     
     var startY = 0, endY = 0;
     $('body').on('touchstart',function(event){
@@ -287,14 +287,14 @@ function goHomePage(){
     $('body').on('touchmove',function(event){
         endY = event.touches[0].pageY;
 
-        if(endY - startY >= 10){
+        if(endY - startY <= -10){
             $('.ad-box').css({
                 '-webkit-transition':'-webkit-transform 500ms ease-in-out',
-                '-webkit-transform':'translateY(50px)'
+                '-webkit-transform':'translateY(-50px)'
             });
         }
 
-        if(endY - startY <= -10){
+        if(endY - startY >= 10){
             $('.ad-box').css({
                 '-webkit-transition':'-webkit-transform 500ms ease-in-out',
                 '-webkit-transform':'translateY(0)'
