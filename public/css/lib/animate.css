@@ -29,12 +29,12 @@
 }
 .scale{
 	animation-name: scale;
- 	animation-duration: 1s;
+ 	animation-duration: 0.5s;
  	animation-direction: alternate;
  	animation-timing-function: ease-in-out;
 
  	-webkit-animation-name: scale;
- 	-webkit-animation-duration: 1s;
+ 	-webkit-animation-duration: 0.5s;
  	-webkit-animation-direction: alternate;
  	-webkit-animation-timing-function: ease-in-out;
 }

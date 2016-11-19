@@ -12,6 +12,9 @@
 	height: 0.50rem;
 	line-height: 0.50rem;
 	border-radius: 0;
+	background: none;
+	font-size: 0.20rem;
+	text-shadow: 2px 2px 4px #fff;
 }
 .record-list{
 	padding-bottom: 0.50rem;

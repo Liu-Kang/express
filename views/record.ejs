@@ -3,11 +3,17 @@
 	<%- include head %>
 	<link rel="stylesheet" href="/css/record.css" />
 	<body>
-		<% if( !record.music ){ %>
-		<audio autoplay="autopaly" loop="loop">
+		<% if( record.music ){ %>
+		<audio id="audio" autoplay="autopaly" loop="loop">
 		  <source src="<%= pageSetting.music[record.music]%>" type="audio/mp3">
 		</audio>
+		<a href="javascript:void(0);" class="music-switch" id="music-switch">
+			<img src="/img/music.png">
+		</a>
 		<% } %>
+		<section class="ad-box">
+			<a href="/" class="ad-link">我也要玩>></a>
+		</section>
 		<section class="container"">
 			<% var page = JSON.parse(record.page); %>
 			<% if( !isNaN(page.dynamicBg) ){ %>
@@ -26,8 +32,9 @@
 				<% }); %>
 				<div id="page-content" style="display:none;"><%= page.content %></div>
 				<div id="page-animation" style="display:none;"><%= aniArr.join('&&') %></div>
+				<div class="content-main"></div>
 			</section>
 		</section>
 	</body>
-	<script type="text/javascript" src="/js/record.js"></script>
+	<script type="text/javascript" src="/js/recordMain.js"></script>
 </html>

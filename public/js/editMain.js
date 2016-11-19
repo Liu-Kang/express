@@ -49,7 +49,7 @@ function viewMod(){
 	});
 
 	$('.edit-page-dynamic .delete-bg').click(function(){
-		$('.bg-selected').attr('data-bg','-1').html('无');
+		$('.bg-selected').attr('data-bg','2').html('snow');
 		$(this).hide();
 	});
 }
@@ -171,7 +171,7 @@ function editResultOperation(){
             dataType:'json',
             success:function(result){
                 if(result.errorCode === 0){
-                	
+                	window.location.href = window.location.origin + '/record/' + result.rid;
                 }else{
                     alertBox(result.errorMsg);
                 }
@@ -183,7 +183,19 @@ function editResultOperation(){
                 $tgt.attr('data-ajax',0);
             }
         });
+	});
 
+	$('#exit').click(function(){
+		confirmAlert({
+			msg:'确定不保存吗？',
+	        cancelFunc:function(){
+	            $('.confirm').remove();
+	        },
+	        sureFunc:function(){
+	            $('.confirm').remove();
+	            window.history.go(-1);
+	        }
+		})
 	});
 }
 

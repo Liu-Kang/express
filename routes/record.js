@@ -9,10 +9,6 @@ module.exports = function(app){
  * record详情页
  */
 function recordAction(req,res,next){
-	if(!req.cookies.user){
-		return res.redirect('/login');
-	}
-
 	var record = new Record();
 	record.getRecordByRid(req.params.recordid,function(result){
 		if(result.length > 0){

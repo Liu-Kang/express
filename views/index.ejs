@@ -4,9 +4,12 @@
 	<link rel="stylesheet" href="/css/index.css" />
 	<body>
 		<%- include ./module/snow %>
-		<audio autoplay="autopaly">
+		<audio id="audio" autoplay="autopaly" loop="loop">
 		  <source src="http://win.web.rf01.sycdn.kuwo.cn/resource/n1/49/22/757273276.mp3" type="audio/mp3">
 		</audio>
+		<a href="javascript:void(0);" class="z999 music-switch" id="music-switch">
+			<img src="/img/music.png">
+		</a>
 		
 		<section class="por z99 container index-container">
 			<div class="cfff head-op clearfix">
@@ -36,7 +39,7 @@
 			</div>
 			<div class="go-express" style="display:none;">
 				<% if(user.userid){ %>
-				<a href="/edit">Click Here to Express Your Love</a>
+				<a href="/edit/dynamic">Click Here to Express Your Love</a>
 				<% }else{ %>
 				<a href="/login">Click Here to Express Your Love</a>
 				<% } %>

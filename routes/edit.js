@@ -62,9 +62,11 @@ function editRecord(req,res,next){
 
 	var record = new Record();
 	record.insertRecordByUserid(param,function(result){
+		console.log('插入数据后，数据库返回值:' + result);
 		return res.json({
 			errorCode:0,
-			errorMsg:'编辑成功'
+			errorMsg:'编辑成功',
+			rid:result.insertId
 		});
 	});
 }
