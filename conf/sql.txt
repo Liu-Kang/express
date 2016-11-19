@@ -1,6 +1,22 @@
--- alter table record add COLUMN page varchar(2000);
--- alter table record add COLUMN music varchar(100);
--- alter table record add COLUMN open int(1) default 1;
--- delete from record where uid=36;
--- alter table record drop COLUMN article;
-insert into record (uid,cdate,udate,title,page) values (0,now(),now(),'动态模板演示1','{"num":1,"dynamicBg":1,"text":"程心,我爱你,到永远"}');
+//创建用户表
+CREATE TABLE IF NOT EXISTS user(
+	id INT(10) AUTO_INCREMENT,
+	username VARCHAR(20) NOT NULL,
+	cellphone VARCHAR(20) NOT NULL,
+	password VARCHAR(50) NOT NULL,
+	sex INT(1) NOT NULL,
+	PRIMARY KEY(id)
+)ENGINE=INNODB DEFAULT CHARSET = UTF8;
+
+//创建作品表
+CREATE TABLE IF NOT EXISTS record2(
+	rid INT(10) AUTO_INCREMENT,
+	uid INT(10) NOT NULL,
+	cdate DATETIME NOT NULL,
+	udate DATETIME NOT NULL,
+	title VARCHAR(50),
+	page VARCHAR(2000),
+	music VARCHAR(50),
+	open INT(1),
+	PRIMARY KEY(rid)
+)ENGINE=INNODB DEFAULT CHARSET = UTF8;
