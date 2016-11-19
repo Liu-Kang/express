@@ -100,11 +100,11 @@
 				<div class="alertBg"></div>
 				<div class="alertMain">
 					<ul class="music-list">
-						<% music.forEach(function(music,index){%>
+						<% for(var i in music){%>
 						<li class="music-sg">
-							<a href="javascript:void(0);" data-music="<%= index %>"><%= music %></a>
+							<a href="javascript:void(0);" data-music="<%= i %>"><%= i %></a>
 						</li>
-						<% }); %>
+						<% } %>
 					</ul>
 				</div>
 			</div>

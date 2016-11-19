@@ -21,7 +21,7 @@
       opacity: 0.5;
     }
 </style>
-<% if( rid >= 23 && rid <= 26 ){ %>
+<% var rid = rid || 0;if( rid >= 23 && rid <= 26 ){ %>
   <% var dynamicbg = dynamicbg || []; %>
   <%- include('modTab',{dynamicbg:dynamicbg,select:3}); %>
 <% } %>
