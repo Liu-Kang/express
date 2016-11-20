@@ -273,6 +273,9 @@ function musicPause(){
  * 回到主页入口
  */
 function goHomePage(){
+    if($('.bg-mod-list').length > 0){
+        return;
+    }
     window.setTimeout(function(){
         $('.ad-box').css({
             '-webkit-transition':'-webkit-transform 500ms ease-in-out',

@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<%- include head %>
-	<link rel="stylesheet" href="/css/record.css" />
+	<head>
+		<title><%= title %></title>
+		<meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	    <meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-touch-fullscreen" content="YES" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta name="screen-orientation" content="portrait">
+	    <meta name="x5-orientation" content="portrait">
+	    <link rel="stylesheet" href="/css/record.css" />
+		<script type="text/javascript" src="/js/lib/zepto.min.js"></script>
+	    <script type="text/javascript" src="/js/common.js"></script>
+	</head>
 	<body>
 		<% if( record.music ){ %>
 		<audio id="audio" autoplay="autopaly" loop="loop">

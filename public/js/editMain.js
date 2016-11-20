@@ -3,7 +3,7 @@
  */
 var sizeRate = document.documentElement.clientWidth / 375.0 * 100;
 function indexInit(){
-    $('html').css('font-size',sizeRate);
+	$('html').css('font-size',sizeRate);
     selectMusic();
     viewMod();
     editContent();
@@ -44,6 +44,7 @@ function selectMusic(){
 function viewMod(){
 	$('.show-dynamic-bg').click(function(){
 		$('.dynamic-mod').show();
+		$('.mod-iframe').prop('src','/record/23');
 		$('.container').hide();
 	});
 

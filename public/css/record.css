@@ -1,8 +1,85 @@
 @charset "utf-8";
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, 
+dd, p, blockquote, pre, form, fieldset, table, th, td, input, table, textarea {
+    margin: 0;
+    padding: 0;
+}
+html{
+	width: 100%;
+	height: 100%;
+	font-size: 100px;
+}
+body{
+	width: 100%;
+	height: 100%;
+	color: #FFF;
+	font-size: 0.16rem;
+	font-family: Arial,'Microsoft YaHei'!important;
+	overflow-x: hidden;
+}
+ol,ul{
+    list-style:none;
+}
+a{
+	text-decoration: none;
+	color: #FFF;
+}
+.pagebg{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.hide{display: none;}
+.ofh{overflow: hidden !important;}
+.bluetext{color: #225fba !important;}
+.redtext{color:#EF4F4F !important;}
+.cfff{color: #fff !important;}
+.c999{color: #999 !important;}
+.fl{float: left !important;}
+.fr{float: right !important;}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.btn{
+	width: 100%;
+	height: .40rem;
+    line-height: .40rem;
+	display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    font-size: .16rem;
+    color: #fff;
+    background-color: #bbb;
+}
+.flexbox{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.flex1{
+	-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
 .container{
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	z-index: 9;
+	position: relative;
+    overflow: hidden;
 }
 .music-switch{
 	position: fixed;
