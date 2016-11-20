@@ -13,9 +13,9 @@
     npm install express -g
     npm install express-generator -g
     npm install supervisor -g  //代码调试利器
-    安装完成之后输入 express -V 验证express是否安装成功
+    安装项目依赖，执行以下命令：
+    npm install
 ###2.建表，使用mysql数据库
-
 ```SQL
 //创建express数据库
 CREATE DATABASE express;
@@ -44,6 +44,16 @@ CREATE TABLE IF NOT EXISTS record(
 )ENGINE=INNODB DEFAULT CHARSET = UTF8;
 ```
 ###3.修改mysql配置
-	进入conf目录下的config.js，修改用户名和密码
+进入conf目录下创建config.js文件，配置mysql信息：
+```javascript
+module.exports = {
+	mysql : {
+		host:xxxxx,
+		user:xxxxxx,
+		password:xxxxxx,
+		database:'express'
+	}
+}
+```
 ###4.打开页面
 	进入项目根目录，在控制台输入 supervisor ./bin/www , 在浏览器端输入localhost:3000即可进入页面
