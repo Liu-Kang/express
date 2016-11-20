@@ -3,10 +3,6 @@
 a,img{border:0;}
 body{font:12px/180% Arial, Helvetica, sans-serif;color:#fff;text-shadow: 0 0 8px #000;}
 </style>
-<% var rid = rid || 0;if( rid >= 23 && rid <= 26 ){ %>
-  <% var dynamicbg = dynamicbg || []; %>
-  <%- include('modTab',{dynamicbg:dynamicbg,select:2}); %>
-<% } %>
 <canvas id="sakura"></canvas>
 <!-- sakura shader -->
 <script id="sakura_point_vsh" type="x-shader/x_vertex">

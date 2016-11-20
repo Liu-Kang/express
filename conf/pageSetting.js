@@ -1,9 +1,9 @@
 // 数据库page字段
-// {
-// 		"num":1,
-// 		"dynamicBg":0,
-// 		"text":'xxxxx&&xxx,xx?xx!xxxxx&&xxx' //即通过&&进行分割
-// }
+//{
+//	"content":"曾经有一份真诚的爱情摆在我面前，我没有珍惜&&等到失去的时候才后悔莫及",
+//	"animation":"0&&0",
+//	"dynamicBg":"3"
+//}
 
 module.exports = {
 	//定义动画种类

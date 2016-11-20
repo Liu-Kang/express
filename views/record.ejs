@@ -47,6 +47,9 @@
 				<div class="content-main"></div>
 			</section>
 		</section>
+		<% if( record.rid <= pageSetting.dynamicBg.length ){ %>
+		  <%- include('module/modTab',{dynamicbg:pageSetting.dynamicBg,select:record.rid}); %>
+		<% } %>
 	</body>
 	<script type="text/javascript" src="/js/recordMain.js"></script>
 </html>

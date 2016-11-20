@@ -52,7 +52,7 @@
 	}
 </style>
 <ul class="flexbox bg-mod-list">
-	<% var recordUrl = 23; dynamicbg.forEach(function(mod,index){ %>
+	<% var recordUrl = 1; dynamicbg.forEach(function(mod,index){ %>
 	<li class="flex1 bg-mod-sg <% if(index + 1 == select){ %>selected<% } %>" data-mod="<%= index %>" data-modname="<%= dynamicbg[index] %>">
 		<a class="mod-view" href="/record/<%= recordUrl %>">模板<%= index + 1 %></a>
 	</li>

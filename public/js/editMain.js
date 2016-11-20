@@ -44,7 +44,7 @@ function selectMusic(){
 function viewMod(){
 	$('.show-dynamic-bg').click(function(){
 		$('.dynamic-mod').show();
-		$('.mod-iframe').prop('src','/record/23');
+		$('.mod-iframe').prop('src','/record/1');
 		$('.container').hide();
 	});
 
