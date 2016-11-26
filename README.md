@@ -56,4 +56,4 @@ module.exports = {
 }
 ```
 ###4.打开页面
-	进入项目根目录，在控制台输入 supervisor ./bin/www , 在浏览器端输入localhost:3000即可进入页面
+	进入项目根目录，在控制台输入 "supervisor ./bin/www" 或者 "npm run start" , 在浏览器端输入localhost:3000即可进入页面
