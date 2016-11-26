@@ -23,7 +23,7 @@
 				<div class="edit-sg edit-title">
 	                <div class="edit-tip">标题</div>
 	                <div class="input-box">
-	                    <input class="input" id="title" type="text">
+	                    <input class="input" id="title" type="text" value="<%= record ? record.title : '' %>">
 	                </div>
 	            </div>
 	            <div class="edit-sg edit-music ">
@@ -32,8 +32,12 @@
 	            		<a class="fr redtext show-music" href="javascript:void(0);">查看音乐列表</a>
 	            	</div>
 	            	<div class="mt10 clearfix choose">
-	            		<span class="fl ellipsis music-width">已选择：<span class="music-selected" data-music="-1">无</span></span>
-	            		<a class="fr cfff delete-music" href="javascript:void(0);" style="display:none;">删除音乐选择</a>
+	            		<% var dataMusic = -1, musicName = '无', musicShow = 'display:none;' %>
+	            		<% if(record && record.music != -1){ %>
+	            			<% dataMusic = record.music, musicName = record.music, musicShow = 'display:block;' %>
+	            		<% } %>
+	            		<span class="fl ellipsis music-width">已选择：<span class="music-selected" data-music="<%= dataMusic %>"><%= musicName %></span></span>
+	            		<a class="fr cfff delete-music" href="javascript:void(0);" style="<%= musicShow %>">删除音乐选择</a>
 	            	</div>
 	            </div>
 	            <% if(type == 'static'){ %>
@@ -59,6 +63,11 @@
 			            </ul>
 		        	</div>
 		        <% }else if(type == 'dynamic'){ %>
+		        	<% var dataBg = 2, bgName = 'snow', bgShow = 'display:none;' %>
+            		<% if(record){ %>
+            			<% var recordPage = JSON.parse(record.page); %>
+            			<% dataBg = recordPage.dynamicBg, bgName = dynamicbg[recordPage.dynamicBg], bgShow = 'display:block;' %>
+            		<% } %>
 		        	<div class="edit-page edit-page-dynamic">
 	            		<div class="edit-page-sg">
 				            <div class="edit-bg ">
@@ -67,8 +76,8 @@
 				            		<a class="fr redtext show-dynamic-bg" href="javascript:void(0);">查看模板</a>
 				            	</div>
 				            	<div class="mt10 clearfix choose">
-				            		<span class="fl">已选择：<span class="bg-selected" data-bg="2">snow</span></span>
-				            		<a class="fr cfff delete-bg" href="javascript:void(0);" style="display:none;">删除模板选择</a>
+				            		<span class="fl">已选择：<span class="bg-selected" data-bg="<%= dataBg %>"><%= bgName %></span></span>
+				            		<a class="fr cfff delete-bg" href="javascript:void(0);" style="<%= bgShow %>">删除模板选择</a>
 				            	</div>
 				            </div>
 			            </div>
@@ -78,22 +87,41 @@
 	                <div class="edit-tip">你想对TA说什么</div>
 	                <div class="content-box">
 	                	<ul class="content-list">
-	                		<li class="content-sg" data-animate="0">
-	                			<div class="tac">
-	                				<span class="mr10">第1段</span>
-	                				<a class="cfff set-content-animation" href="javascript:void(0);">设置动画</a>
-	                			</div>
-	                			<textarea class="mt10 textarea content0"></textarea>
-	                		</li>
+	                		<% if(record){ %>
+		            			<% var content = JSON.parse(record.page).content; %>
+		            			<% var animation = JSON.parse(record.page).animation; %>
+		            			<% var contentArr = content.split('&&'); %>
+		            			<% var animationArr = animation.split('&&'); %>
+		            			<% if(contentArr.length > 0){ %>
+		            				<% contentArr.forEach(function(ct,index){ %>
+		            					<li class="content-sg" data-animate="<%= animationArr[index] %>">
+				                			<div class="tac">
+				                				<span class="mr10">第<%= index + 1 %>段</span>
+				                				<a class="cfff set-content-animation" href="javascript:void(0);"><%= animate[animationArr[index]] %></a>
+				                			</div>
+				                			<textarea class="mt10 textarea content0"><%= ct %></textarea>
+				                		</li>
+		            				<% }); %>
+		            			<% } %>
+		            		<% }else{ %>
+		                		<li class="content-sg" data-animate="0">
+		                			<div class="tac">
+		                				<span class="mr10">第1段</span>
+		                				<a class="cfff set-content-animation" href="javascript:void(0);">设置动画</a>
+		                			</div>
+		                			<textarea class="mt10 textarea content0"></textarea>
+		                		</li>
+	                		<% } %>
 	                	</ul>
 	                	<div class="tac mt20">
 	                		<a class="mt20 cfff" id="add-content" href="javascript:void(0);">编辑下一段话</a>
 	                	</div>
 	                </div>
 	            </div>
-		        <div class="bgred flexbox edit-operation">
-		        	<a class="flex1" href="javascript:void(0);" id="exit">不保存</a>
-		        	<a class="flex1" href="javascript:void(0);" data-userid="<%= user.userid %>" id="save">保存</a>
+		        <div class="bgred flexbox edit-operation" data-userid="<%= user.userid %>">
+		        	<a class="flex1" href="javascript:void(0);" id="exit">退出</a>
+		        	<a class="flex1" href="javascript:void(0);" id="preview">预览</a>
+		        	<a class="flex1" href="javascript:void(0);" id="save">保存</a>
 		        </div>
 			</div>
 			<div class="alert music-box">

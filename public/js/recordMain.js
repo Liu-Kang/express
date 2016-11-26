@@ -246,8 +246,12 @@ function startAnimation(){
                     '-webkit-transform':'translateY(-' + moveY + 'px)'
                 });
             }
-
-            eval('animate.' + animationArr[i] + '(contentArr[i],callback)');
+            try{
+                eval('animate.' + animationArr[i] + '(contentArr[i],callback)');
+            }catch(e){
+                
+            }
+            
         }
     },1000);
 }
@@ -270,7 +274,7 @@ function musicPause(){
 }
 
 /**
- * 回到主页入口
+ * 底部按钮：回到主页入口/继续编辑
  */
 function goHomePage(){
     if($('.bg-mod-list').length > 0){
@@ -306,8 +310,12 @@ function goHomePage(){
     });
 }
 
+
 $(document).ready(function(){
     $('html').css('font-size',sizeRate);
     startAnimation();
     musicPause();
+    $('.edit-continue').click(function(){
+        window.location.href = window.location.origin + '/edit/dynamic';
+    });
 });

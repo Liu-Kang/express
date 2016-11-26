@@ -15,7 +15,7 @@
 	    <script type="text/javascript" src="/js/common.js"></script>
 	</head>
 	<body>
-		<% if( record.music ){ %>
+		<% if( record.music && record.music != -1 ){ %>
 		<audio id="audio" autoplay="autopaly" loop="loop">
 		  <source src="<%= pageSetting.music[record.music]%>" type="audio/mp3">
 		</audio>
@@ -23,9 +23,17 @@
 			<img src="/img/music.png">
 		</a>
 		<% } %>
+
+		<% if(preview == 0){ %>
 		<section class="ad-box">
 			<a href="/edit/dynamic" class="ad-link">我也要玩>></a>
 		</section>
+		<% }else{ %>
+		<section class="back-box">
+			<a href="javascript:void(0)" class="ad-link edit-continue">继续编辑>></a>
+		</section>
+		<% } %>
+
 		<section class="container"">
 			<% var page = JSON.parse(record.page); %>
 			<% if( !isNaN(page.dynamicBg) ){ %>

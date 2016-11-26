@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var session = require('express-session');
+var session = require('express-session');
 // var flash = require('connect-flash');
 
 var app = express();
@@ -20,6 +20,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret:'2917',
+  cookie: {maxAge:1000*60*10},
+  resave:true
+}));
 
 //页面路由
 var myRouter = require('./router');

@@ -113,9 +113,78 @@ function editContent(){
 }
 
 /**
- * 保存或退出
+ * 预览/保存/退出
  */
 function editResultOperation(){
+	$('#preview').click(function(){
+		var $tgt = $(this);
+
+		if($tgt.attr('data-ajax') == '1'){
+			return false;
+		}
+
+		var title = $.trim( $('#title').val() );
+		var music = $('.music-selected').attr('data-music');
+		var bg = $('.bg-selected').attr('data-bg');
+		var bgType = $('.edit-page').hasClass('edit-page-static') ? 'static' : 'dynamic';
+		var content = '',animation = '';
+		$('.content-sg').each(function(){
+			var value = $.trim( $(this).find('textarea').val() );
+			if(value !== ''){
+				content += '&&' + $.trim( $(this).find('textarea').val() );
+				animation += '&&' + $(this).attr('data-animate');
+			}
+		});
+		content = content.substring(2);
+		animation = animation.substring(2);
+
+		if(!title || title === ''){
+			alertBox('请填写标题');
+			return false;
+		}
+
+		if(title.length > 50){
+			alertBox('标题长度不多于50个字');
+			return false;
+		}
+
+		if(content.length > 1000){
+			alertBox('表达内容不多于1000个字');
+			return false;
+		}
+
+		var oData = {
+			userid:$tgt.parent().attr('data-userid'),
+			music:music,
+			bg:bg,
+			bgType:bgType,
+			title:title,
+			content:content,
+			animation:animation
+		};
+
+		$tgt.attr('data-ajax',1);
+		$.ajax({
+            url:'/edit/previewRecord/',
+            data:oData,
+            type:'POST',
+            dataType:'json',
+            success:function(result){
+                if(result.errorCode === 0){
+                	window.location.href = window.location.origin + '/record/preview';
+                }else{
+                    alertBox(result.errorMsg);
+                }
+            },
+            error:function(){
+                alertBox('服务器出问题了');
+            },
+            complete:function(){
+                $tgt.attr('data-ajax',0);
+            }
+        });
+	});
+
 	$('#save').click(function(){
 		var $tgt = $(this);
 
@@ -154,7 +223,7 @@ function editResultOperation(){
 		}
 
 		var oData = {
-			userid:$tgt.attr('data-userid'),
+			userid:$tgt.parent().attr('data-userid'),
 			music:music,
 			bg:bg,
 			bgType:bgType,
@@ -186,16 +255,36 @@ function editResultOperation(){
 	});
 
 	$('#exit').click(function(){
+		var $tgt = $(this);
+
 		confirmAlert({
 			msg:'确定不保存吗？',
 	        cancelFunc:function(){
 	            $('.confirm').remove();
 	        },
 	        sureFunc:function(){
-	            $('.confirm').remove();
-	            window.history.go(-1);
+	        	if($tgt.attr('data-ajax') == '1'){
+					return false;
+				}
+
+				$tgt.attr('data-ajax',1);
+				$.ajax({
+		            url:'/edit/destroyPreview/',
+		            data:{},
+		            type:'post',
+		            dataType:'json',
+		            success:function(result){
+		                if(result.errorCode === 0){
+		                	$('.confirm').remove();
+	            			window.history.go(-1);
+		                }
+		            },
+		            complete:function(){
+		                $tgt.attr('data-ajax',0);
+		            }
+		        });
 	        }
-		})
+		});
 	});
 }
 
