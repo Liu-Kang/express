@@ -276,7 +276,7 @@ function editResultOperation(){
 		            success:function(result){
 		                if(result.errorCode === 0){
 		                	$('.confirm').remove();
-	            			window.history.go(-1);
+	            			window.location.href = window.location.origin + '/user/' + $tgt.parent().attr('data-userid');
 		                }
 		            },
 		            complete:function(){

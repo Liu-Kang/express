@@ -4,6 +4,7 @@ var Record = require('../models/record');
 module.exports = function(app){
 	app.get('/user/:userid',userAction);
 	app.all('/user/getRecord',getRecord);
+	app.all('/user/deleteRecord',deleteRecord);
 }
 /**
  * 用户主页
@@ -34,8 +35,6 @@ function userAction(req,res,next){
 	  	 	user:userInfo
 	    });
 	});
-
-	
 }
 
 /**
@@ -60,4 +59,28 @@ function getRecord(req,res,next){
 	});
 }
 
+
+/**
+ * 删除单个record
+ */
+function deleteRecord(req,res,next){
+	var data = req.method == 'GET' ? req.query : req.body;
+
+	if(!req.cookies.user){
+		return res.json({
+			errorCode:-1,
+			errorMsg:'未登录'
+		});
+	}
+
+	var rid = data.rid;
+
+	var record = new Record();
+	record.deleteRecordByRid(rid,function(result){
+		return res.json({
+			errorCode:0,
+			errorMsg:'删除成功'
+		});
+	});
+}
 

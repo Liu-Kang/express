@@ -19,6 +19,7 @@
 				<% user.records.forEach(function(record){ %>
 				<li class="record-sg clearfix" data-rid="<%= record.rid %>">
 					<div class="ellipsis fl record-title"><%= record.title %></div>
+					<a href="javascript:void(0);" class="fr record-delete ml10">删除</a>
 					<div class="fr record-cdate"><%= moment(record.cdate).format('MM/DD') %></div>
 				</li>
 				<% }); %>

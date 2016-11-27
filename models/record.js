@@ -38,7 +38,8 @@ Record.prototype.insertRecordByUserid = function(record,callback){
 Record.prototype.getRecordByUserid = function(param,callback){
 	pool.getConnection(function(err,connection){
 		connection.query(
-			'select * from record where uid='+param.userid+' order by cdate limit ' + param.limit,
+			'select * from record where uid=? order by cdate limit ?',
+			[param.userid,param.limit],
 			function(err,result){
 				if(err) throw err;
 
@@ -60,10 +61,33 @@ Record.prototype.getRecordByUserid = function(param,callback){
 Record.prototype.getRecordByRid = function(rid,callback){
 	pool.getConnection(function(err,connection){
 		connection.query(
-			'select * from record where rid='+rid,
+			'select * from record where rid=?',
+			[rid],
 			function(err,result){
 				if(err) throw err;
 
+				if(result){
+					callback(result);
+				}
+			}
+		);
+		connection.release();
+	});
+}
+
+/**
+ * 根据rid删除record记录
+ * @param  {[type]}   param    [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+Record.prototype.deleteRecordByRid = function(rid,callback){
+	pool.getConnection(function(err,connection){
+		connection.query(
+			'delete from record where rid=?',
+			[rid],
+			function(err,result){
+				if(err) throw err;
 				if(result){
 					callback(result);
 				}

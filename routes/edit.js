@@ -71,6 +71,8 @@ function editRecord(req,res,next){
 		});
 	}
 
+	req.session.destroy();
+
 	var record = new Record();
 	record.insertRecordByUserid(param,function(result){
 		return res.json({
