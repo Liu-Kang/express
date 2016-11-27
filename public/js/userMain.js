@@ -58,7 +58,7 @@ function deleteRecord(){
 				alertBox('操作失败');
 			},
 			complete:function(){
-				$this.attr('data-ajax','1');
+				$this.attr('data-ajax','0');
 			}
 		})
 	});
