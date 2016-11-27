@@ -3,9 +3,10 @@ var Record = require('../models/record');
 
 module.exports = function(app){
 	app.get('/user/:userid',userAction);
-	app.all('/user/getRecord',getRecord);
-	app.all('/user/deleteRecord',deleteRecord);
+	app.all('/userdeal/getRecord',getRecord);
+	app.all('/userdeal/deleteRecord',deleteRecord);
 }
+
 /**
  * 用户主页
  */

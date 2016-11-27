@@ -165,7 +165,7 @@ function editResultOperation(){
 
 		$tgt.attr('data-ajax',1);
 		$.ajax({
-            url:'/edit/previewRecord/',
+            url:'/editdeal/previewRecord/',
             data:oData,
             type:'POST',
             dataType:'json',
@@ -234,7 +234,7 @@ function editResultOperation(){
 
 		$tgt.attr('data-ajax',1);
 		$.ajax({
-            url:'/edit/submitRecord/',
+            url:'/editdeal/submitRecord/',
             data:oData,
             type:'POST',
             dataType:'json',
@@ -269,9 +269,9 @@ function editResultOperation(){
 
 				$tgt.attr('data-ajax',1);
 				$.ajax({
-		            url:'/edit/destroyPreview/',
+		            url:'/editdeal/destroyPreview/',
 		            data:{},
-		            type:'post',
+		            type:'GET',
 		            dataType:'json',
 		            success:function(result){
 		                if(result.errorCode === 0){

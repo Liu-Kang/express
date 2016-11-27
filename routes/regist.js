@@ -3,7 +3,7 @@ var User = require('../models/user');
 
 module.exports = function(app){
 	app.get('/regist', registAction);
-	app.all('/regist/submit', submitAction);
+	app.all('/registdeal/submit', submitAction);
 }
 
 /**

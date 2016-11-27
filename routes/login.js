@@ -7,7 +7,7 @@ var crypto = require('crypto');
 module.exports = function(app){
 	app.get('/login',loginAction);
 	app.get('/loginOut',loginOut);
-	app.all('/login/checkLoginInfo',checkLoginInfoAction);
+	app.all('/logindeal/checkLoginInfo',checkLoginInfoAction);
 };
 
 /**

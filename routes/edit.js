@@ -3,9 +3,9 @@ var pageSetting = require('../conf/pageSetting');
 
 module.exports = function(app){
 	app.get('/edit/:type',editAction);
-	app.all('/edit/submitRecord',editRecord);
-	app.all('/edit/previewRecord',previewRecord);
-	app.all('/edit/destroyPreview',destroyPreview);
+	app.all('/editdeal/submitRecord',editRecord);
+	app.all('/editdeal/previewRecord',previewRecord);
+	app.all('/editdeal/destroyPreview',destroyPreview);
 }
 
 /**

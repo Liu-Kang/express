@@ -43,7 +43,7 @@ function registSubmit(){
 
         $tgt.attr('data-ajax',1);
         $.ajax({
-            url:'/regist/submit/',
+            url:'/registdeal/submit/',
             data:oData,
             type:'get',
             dataType:'json',

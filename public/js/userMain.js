@@ -36,8 +36,8 @@ function deleteRecord(){
 
 		$this.attr('data-ajax','1');
 		$.ajax({
-			url:'/user/deleteRecord/',
-			type:'POST',
+			url:'/userdeal/deleteRecord/',
+			type:'GET',
 			data:oData,
 			dataType:'json',
 			success:function(result){

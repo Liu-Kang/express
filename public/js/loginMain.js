@@ -33,7 +33,7 @@ function loginSubmit(){
 
         $tgt.attr('data-ajax',1);
         $.ajax({
-            url:'/login/checkLoginInfo/',
+            url:'/logindeal/checkLoginInfo/',
             data:oData,
             type:'get',
             dataType:'json',
