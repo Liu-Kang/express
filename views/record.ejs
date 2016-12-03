@@ -12,7 +12,6 @@
 	    <meta name="x5-orientation" content="portrait">
 	    <link rel="stylesheet" href="/css/record.css" />
 		<script type="text/javascript" src="/js/lib/zepto.min.js"></script>
-	    <script type="text/javascript" src="/js/common.js"></script>
 	</head>
 	<body>
 		<% if( record.music && record.music != -1 ){ %>
@@ -59,5 +58,7 @@
 		  <%- include('module/modTab',{dynamicbg:pageSetting.dynamicBg,select:record.rid}); %>
 		<% } %>
 	</body>
+	<script type="text/javascript" src="/js/common.js"></script>
+	<script type="text/javascript" src="/js/lib/wordsAnimate.js"></script>
 	<script type="text/javascript" src="/js/recordMain.js"></script>
 </html>

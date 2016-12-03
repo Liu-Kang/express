@@ -112,9 +112,7 @@ function updateRecord(req,res,next){
 			};
 
 			req.session.record = param;
-			console.log('塞入session==================');
-			console.log(req.session);
-			console.log('==================');
+			
 		    return res.json({
 				errorCode:0,
 				errorMsg:'',

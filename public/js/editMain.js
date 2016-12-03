@@ -103,12 +103,20 @@ function editContent(){
 	});
 
 	$('.font-sg a').click(function(){
+		var wa = new Animate();
 		var index = $('.font-box').attr('data-index');
 		var animate = $(this).attr('data-font');
 		var animateName = $(this).text();
+		$('.content-main').show();
+		$('.font-box').hide();
+		var callback = function(){
+			$('.content-main').hide();
+			$('.font-box').show();
+			$('.content-main .text').remove();
+		}
+		eval('wa.' + animateName + '("Hello,World!",callback)');
 		$('.edit-content .content-sg').eq(index).attr('data-animate',animate);
 		$('.edit-content .content-sg').eq(index).find('.set-content-animation').text('动画：' + animateName + '（修改）');
-		$('.font-box').hide();
 	});
 }
 

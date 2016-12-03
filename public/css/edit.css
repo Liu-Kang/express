@@ -1,4 +1,27 @@
 @charset "utf-8";
+.content-main{
+	width: 100%;
+	height: 100%;
+	z-index: 1999;
+	position: absolute;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+	color: blue;
+	text-align: center;
+}
+.content-main .text{
+	width: 100% !important;
+	z-index: 1999;
+	font-size: 0.36rem;
+	font-weight: bold;
+	position: absolute;
+	top: 40%;
+}
+.content-main .text-type{
+	text-align: left;
+	padding-left: 50px;
+}
 .edit-container{
 	padding-bottom: 0.40rem;
 }
@@ -43,8 +66,8 @@
 	margin: 0 auto;
 }
 .music-list a,.font-list a{
-	height: 0.30rem;
-	line-height: 0.30rem;
+	height: 0.40rem;
+	line-height: 0.40rem;
 	display: block;
 }
 .music-width{
