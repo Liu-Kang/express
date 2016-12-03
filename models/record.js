@@ -3,7 +3,9 @@ var config = require('../conf/config');
 
 var pool = mysql.createPool(config.mysql);
 
-function Record(record){}
+function Record(record){
+	this.record = record || {};
+}
 
 module.exports = Record;
 
@@ -12,11 +14,12 @@ module.exports = Record;
  * @param  {Function} callback [description]
  * @return {[type]}            [description]
  */
-Record.prototype.insertRecordByUserid = function(record,callback){
+Record.prototype.insertRecordByUserid = function(callback){
+	var self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
 			'insert into record (uid,cdate,udate,title,page,music,open) values (?,now(),now(),?,?,?,1)',
-			[record.userid,record.title,record.page,record.music],
+			[self.record.userid,self.record.title,self.record.page,self.record.music],
 			function(err,result){
 				if(err) throw err;
 
@@ -86,6 +89,28 @@ Record.prototype.deleteRecordByRid = function(rid,callback){
 		connection.query(
 			'delete from record where rid=?',
 			[rid],
+			function(err,result){
+				if(err) throw err;
+				if(result){
+					callback(result);
+				}
+			}
+		);
+		connection.release();
+	});
+}
+/**
+ * 根据rid更新record记录
+ * @param  {[type]}   rid      [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+Record.prototype.updateRecordByRid = function(callback){
+	var self = this;
+	pool.getConnection(function(err,connection){
+		connection.query(
+			'update record set udate=now(),title=?,page=?,music=? where rid=?',
+			[self.record.title,self.record.page,self.record.music,self.record.rid],
 			function(err,result){
 				if(err) throw err;
 				if(result){

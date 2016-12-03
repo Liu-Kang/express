@@ -232,9 +232,16 @@ function editResultOperation(){
 			animation:animation
 		};
 
+		//是否是修改操作
+		var ajaxUrl = '/editdeal/submitRecord/';
+		if($tgt.attr('data-rid') != '-1'){
+			ajaxUrl = '/editdeal/updateRecord/';
+			oData.rid = $tgt.attr('data-rid');
+		}
+
 		$tgt.attr('data-ajax',1);
 		$.ajax({
-            url:'/editdeal/submitRecord/',
+            url:ajaxUrl,
             data:oData,
             type:'POST',
             dataType:'json',

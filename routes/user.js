@@ -5,6 +5,7 @@ module.exports = function(app){
 	app.get('/user/:userid',userAction);
 	app.all('/userdeal/getRecord',getRecord);
 	app.all('/userdeal/deleteRecord',deleteRecord);
+	app.all('/userdeal/updateRecord',updateRecord);
 }
 
 /**
@@ -56,7 +57,7 @@ function getRecord(req,res,next){
 		return res.json({
 			errorCode:0,
 			errorMsg:'编辑成功'
-		})
+		});
 	});
 }
 
@@ -82,6 +83,49 @@ function deleteRecord(req,res,next){
 			errorCode:0,
 			errorMsg:'删除成功'
 		});
+	});
+}
+
+/**
+ * 修改单个record
+ * 取出record数据，存进session,跳转到编辑页面
+ */
+function updateRecord(req,res,next){
+	if(!req.cookies.user){
+		return res.json({
+			errorCode:-1,
+			errorMsg:'未登录'
+		});
+	}
+
+	var data = req.method == 'GET' ? req.query : req.body;
+
+	var record = new Record();
+	record.getRecordByRid(data.rid,function(result){
+		if(result.length > 0){
+			var data = result[0];
+			var param = {
+				userid:data.userid,
+				title:data.title,
+				music:data.music,
+				page:data.page
+			};
+
+			req.session.record = param;
+			console.log('塞入session==================');
+			console.log(req.session);
+			console.log('==================');
+		    return res.json({
+				errorCode:0,
+				errorMsg:'',
+				rid:data.rid
+			});
+		}else{
+			return res.json({
+				errorCode:-2,
+				errorMsg:'没有该条记录'
+			});
+		}
 	});
 }
 
