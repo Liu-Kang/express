@@ -1,3 +1,5 @@
+'use strict';
+
 const mysql = require('mysql');
 const config = require('../conf/config');
 const pool = mysql.createPool(config.mysql);
@@ -14,7 +16,7 @@ module.exports = User;
  * @return {[type]}            [description]
  */
 User.prototype.createUser = function(callback){
-	var self = this;
+	let self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
 			'insert into user (username,cellphone,password,sex) values (?,?,?,?);',
@@ -37,7 +39,7 @@ User.prototype.createUser = function(callback){
  * @return {[type]}            [description]
  */
 User.prototype.getUserByName = function(callback){
-	var self = this;
+	let self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
 			'select * from user where username="' + self.user.username + '";',

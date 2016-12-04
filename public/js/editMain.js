@@ -113,7 +113,7 @@ function editContent(){
 			$('.content-main').hide();
 			$('.font-box').show();
 			$('.content-main .text').remove();
-		}
+		};
 		eval('wa.' + animateName + '("Hello,World!",callback)');
 		$('.edit-content .content-sg').eq(index).attr('data-animate',animate);
 		$('.edit-content .content-sg').eq(index).find('.set-content-animation').text('动画：' + animateName + '（修改）');

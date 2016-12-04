@@ -1,3 +1,5 @@
+'use strict';
+
 const mysql = require('mysql');
 const config = require('../conf/config');
 const pool = mysql.createPool(config.mysql);
@@ -14,7 +16,7 @@ module.exports = Record;
  * @return {[type]}            [description]
  */
 Record.prototype.insertRecordByUserid = function(callback){
-	var self = this;
+	let self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
 			'insert into record (uid,cdate,udate,title,page,music,open) values (?,now(),now(),?,?,?,1)',
@@ -106,7 +108,7 @@ Record.prototype.deleteRecordByRid = function(rid,callback){
  * @return {[type]}            [description]
  */
 Record.prototype.updateRecordByRid = function(callback){
-	var self = this;
+	let self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
 			'update record set udate=now(),title=?,page=?,music=? where rid=?',
