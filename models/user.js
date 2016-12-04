@@ -30,7 +30,7 @@ User.prototype.createUser = function(callback){
 		);
 		connection.release();
 	});
-}
+};
 
 /**
  * 根据用户名搜索
@@ -52,4 +52,4 @@ User.prototype.getUserByName = function(callback){
 		);
 		connection.release();
 	});
-}
+};

@@ -30,7 +30,7 @@ Record.prototype.insertRecordByUserid = function(callback){
 		);
 		connection.release();
 	});
-}
+};
 
 /**
  * 根据用户id获取record列表
@@ -53,7 +53,7 @@ Record.prototype.getRecordByUserid = function(param,callback){
 		);
 		connection.release();
 	});
-}
+};
 
 /**
  * 根据rid获取record详细
@@ -76,7 +76,7 @@ Record.prototype.getRecordByRid = function(rid,callback){
 		);
 		connection.release();
 	});
-}
+};
 
 /**
  * 根据rid删除record记录
@@ -98,7 +98,8 @@ Record.prototype.deleteRecordByRid = function(rid,callback){
 		);
 		connection.release();
 	});
-}
+};
+
 /**
  * 根据rid更新record记录
  * @param  {[type]}   rid      [description]
@@ -120,4 +121,4 @@ Record.prototype.updateRecordByRid = function(callback){
 		);
 		connection.release();
 	});
-}
+};

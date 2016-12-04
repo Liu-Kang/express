@@ -39,7 +39,7 @@ function typewriter(text,callback){
             }
         }, 150);
     });
-};
+}
 
 /**
  * 音乐暂停和继续播放
