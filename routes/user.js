@@ -1,12 +1,12 @@
-var User = require('../models/user');
-var Record = require('../models/record');
+const User = require('../models/user');
+const Record = require('../models/record');
 
 module.exports = function(app){
 	app.get('/user/:userid',userAction);
 	app.all('/userdeal/getRecord',getRecord);
 	app.all('/userdeal/deleteRecord',deleteRecord);
 	app.all('/userdeal/updateRecord',updateRecord);
-}
+};
 
 /**
  * 用户主页

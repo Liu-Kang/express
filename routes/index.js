@@ -1,8 +1,8 @@
-var User = require('../models/user');
+const User = require('../models/user');
 
 module.exports = function(app){
 	app.get('/',indexAction);
-}
+};
 
 /**
  * 首页

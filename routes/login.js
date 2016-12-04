@@ -1,8 +1,8 @@
 /**
  * 用户登录
  */
-var User = require('../models/user');
-var crypto = require('crypto');
+const User = require('../models/user');
+const crypto = require('crypto');
 
 module.exports = function(app){
 	app.get('/login',loginAction);

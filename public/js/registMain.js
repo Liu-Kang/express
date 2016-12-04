@@ -26,7 +26,7 @@ function registSubmit(){
             password:$.trim($('#password').val()),
             rePassword:$.trim($('#rePassword').val()),
             sex:$('[name="sex"]:checked').val()
-        }
+        };
 
         if( !usernameCheck(oData.username) ){
             return false;
@@ -71,7 +71,7 @@ function registSubmit(){
  * 用户名校验
  */
 function usernameCheck(name){
-    if(name == ''){
+    if(name === ''){
         $('#error').text('请输入用户名').show();
         return false;
     }
@@ -87,7 +87,7 @@ function usernameCheck(name){
  */
 function phoneCheck(phone){
     var reg = /^1[34578]\d{9}$/;
-    if(phone == ''){
+    if(phone === ''){
         $('#error').text('请输入手机号码').show();
         return false;
     }
@@ -102,7 +102,7 @@ function phoneCheck(phone){
  * 密码校验
  */
 function passwordCheck(psw){
-    if(psw == ''){
+    if(psw === ''){
         $('#error').text('请设置密码').show();
         return false;
     }
@@ -119,7 +119,7 @@ function passwordCheck(psw){
  */
 function rePasswordCheck(repsw){
     var psw = $.trim($('#password').val());
-    if(repsw == ''){
+    if(repsw === ''){
         $('#error').text('请确认密码').show();
         return false;
     }

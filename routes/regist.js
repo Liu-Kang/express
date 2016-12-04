@@ -1,10 +1,10 @@
-var crypto = require('crypto');
-var User = require('../models/user');
+const crypto = require('crypto');
+const User = require('../models/user');
 
 module.exports = function(app){
 	app.get('/regist', registAction);
 	app.all('/registdeal/submit', submitAction);
-}
+};
 
 /**
  * 页面渲染

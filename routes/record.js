@@ -1,9 +1,9 @@
-var Record = require('../models/record');
-var pageSetting = require('../conf/pageSetting');
+const Record = require('../models/record');
+const pageSetting = require('../conf/pageSetting');
 
 module.exports = function(app){
 	app.get('/record/:recordid',recordAction);
-}
+};
 
 /**
  * record详情页

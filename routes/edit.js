@@ -1,5 +1,5 @@
-var Record = require('../models/record');
-var pageSetting = require('../conf/pageSetting');
+const Record = require('../models/record');
+const pageSetting = require('../conf/pageSetting');
 
 module.exports = function(app){
 	app.get('/edit/:type',editAction);
@@ -7,7 +7,7 @@ module.exports = function(app){
 	app.all('/editdeal/previewRecord',previewRecord);
 	app.all('/editdeal/destroyPreview',destroyPreview);
 	app.all('/editdeal/updateRecord',updateRecord);
-}
+};
 
 /**
  * 编辑页面
