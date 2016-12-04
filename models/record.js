@@ -14,7 +14,7 @@ module.exports = Record;
  * @return {[type]}            [description]
  */
 Record.prototype.insertRecordByUserid = function(callback){
-	let self = this;
+	var self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
 			'insert into record (uid,cdate,udate,title,page,music,open) values (?,now(),now(),?,?,?,1)',
@@ -106,7 +106,7 @@ Record.prototype.deleteRecordByRid = function(rid,callback){
  * @return {[type]}            [description]
  */
 Record.prototype.updateRecordByRid = function(callback){
-	let self = this;
+	var self = this;
 	pool.getConnection(function(err,connection){
 		connection.query(
 			'update record set udate=now(),title=?,page=?,music=? where rid=?',
