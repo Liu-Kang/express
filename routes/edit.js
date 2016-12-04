@@ -31,7 +31,7 @@ function editAction(req,res,next){
   	 	dynamicbg:pageSetting.dynamicBg,
   	 	staticbg:pageSetting.staticBg,
   	 	animate:pageSetting.animate
-	}
+	};
 
 	//如果session中有record，则从session中获取
 	if(req.session.record){
