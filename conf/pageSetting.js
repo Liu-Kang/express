@@ -17,6 +17,7 @@ module.exports = {
 	dynamicBg:['neon','rose','snow','star'],
 	//设定背景音乐
 	music:{
+		'梦中的婚礼':'http://antiserver.kuwo.cn/anti.s?format=aac|mp3&rid=MUSIC_285796&type=convert_url&response=res" type="audio/mp3',
 		'爱如空气.mp3':'http://antiserver.kuwo.cn/anti.s?format=aac|mp3&rid=MUSIC_234728&type=convert_url&response=res',
 		'valentine.mp3':'http://antiserver.kuwo.cn/anti.s?format=aac|mp3&rid=MUSIC_2120748&type=convert_url&response=res',
 		'when you say nothing at all.mp3':'http://antiserver.kuwo.cn/anti.s?format=aac|mp3&rid=MUSIC_472413&type=convert_url&response=res',
