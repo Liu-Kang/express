@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>雪</title>
+  <title>❄️❄️❄️❄️</title>
   <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no" />
@@ -77,6 +77,8 @@
   <source src="http://fs.w.kugou.com/201801280005/f4c02ebb579673baf47d7f8b2405cc08/G130/M08/07/0F/IocBAFo7lrSAT5ERADLJzhjTgFg724.mp3" type="audio/mp3">
 </audio>
 <script>
+  // 下雪的canvas方法
+  // 庆祝18年杭州的雪景呀～～
   !function($){
     var defaults = {
       speed: 0,
@@ -100,18 +102,15 @@
       
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
-          
       (function() {
-          var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
-          function(callback) {
-              window.setTimeout(callback, 1000 / 60);
-          };
-          window.requestAnimationFrame = requestAnimationFrame;
+        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+        window.requestAnimationFrame = requestAnimationFrame;
       })();
-      
       function snow() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-
           for (var i = 0; i < flakeCount; i++) {
               var flake = flakes[i],
                   x = mX,
@@ -183,10 +182,7 @@
           }
           requestAnimationFrame(snow);
       };
-      
-      
       function reset(flake) {
-          
           if (settings.windPower == false || settings.windPower == 0) {
             flake.x = Math.floor(Math.random() * canvas.width);
             flake.y = 0;
@@ -242,28 +238,23 @@
         
         snow();
       }
-      
       if (settings.image != false) {
         $("<img src='"+settings.image+"' style='display: none' id='lis_flake'>").prependTo("body")
       }
-      
       init();
-      
       $(window).resize(function() {
         if(this.resizeTO) clearTimeout(this.resizeTO);
         this.resizeTO = setTimeout(function() {
           el2 = el.clone();
           el2.insertAfter(el);
           el.remove();
-          
           el2.let_it_snow(settings);
         }, 200);
       });
-      
       if (settings.interaction == true) {
         canvas.addEventListener("mousemove", function(e) {
-            mX = e.clientX,
-            mY = e.clientY
+          mX = e.clientX,
+          mY = e.clientY
         });
       }
     }
@@ -282,7 +273,7 @@
       interaction: false
     });
     $('canvas.snow').let_it_snow({
-      windPower: 2,
+      windPower: 3,
       speed: 1.8,
       count: 500,
       size: 0,
@@ -305,22 +296,6 @@
       }
       if (endP.x - startP.x < -40) {
         audio.play();
-      }
-      if (endP.y - startP.y > 40) {
-        $('canvas.snow').let_it_snow({
-          windPower: 2,
-          speed: 1.8,
-          count: 700,
-          size: 0,
-        });
-      }
-      if (endP.y - startP.y < -40) {
-        $('canvas.snow').let_it_snow({
-          windPower: 2,
-          speed: 1.8,
-          count: 200,
-          size: 0,
-        });
       }
     })
   });
