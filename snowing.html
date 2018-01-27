@@ -300,13 +300,13 @@
         x: touch.pageX,
         y: touch.pageY
       };
-      if (endP.x - startP.x > 20) {
+      if (endP.x - startP.x > 40) {
         audio.pause();
       }
-      if (endP.x - startP.x < -20) {
+      if (endP.x - startP.x < -40) {
         audio.play();
       }
-      if (endP.y - startP.y > 20) {
+      if (endP.y - startP.y > 40) {
         $('canvas.snow').let_it_snow({
           windPower: 2,
           speed: 1.8,
@@ -314,7 +314,7 @@
           size: 0,
         });
       }
-      if (endP.y - startP.y < -20) {
+      if (endP.y - startP.y < -40) {
         $('canvas.snow').let_it_snow({
           windPower: 2,
           speed: 1.8,
