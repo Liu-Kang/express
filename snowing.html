@@ -73,8 +73,23 @@
 <canvas width="100%" height="100%" class="flare"></canvas>
 <canvas width="100%" height="100%" class="snow"></canvas>
 <canvas width="100%" height="100%" class="flake"></canvas>
-<audio id="audio" autoplay="autopaly" loop="loop">
+<audio id="audio1" autoplay="autopaly" loop="loop">
   <source src="http://fs.w.kugou.com/201801280005/f4c02ebb579673baf47d7f8b2405cc08/G130/M08/07/0F/IocBAFo7lrSAT5ERADLJzhjTgFg724.mp3" type="audio/mp3">
+</audio>
+<audio id="audio2" loop="loop">
+  <source src="http://fs.w.kugou.com/201801280002/f57d0ecdd9a1a0251eca390d46c927bc/G010/M03/03/17/Sg0DAFT8LoqActFuAEZvhDOZJtc794.mp3" type="audio/mp3">
+</audio>
+<audio id="audio3" loop="loop">
+  <source src="http://fs.w.kugou.com/201801280100/0071f7d0e016dc2bdecb9ad35cc6ba71/G010/M07/06/04/Sg0DAFUJp8uAaPtEADbPt9LQcqU668.mp3" type="audio/mp3">
+</audio>
+<audio id="audio4" loop="loop">
+  <source src="http://fs.w.kugou.com/201801280101/4f9d0b6efdbcfdda32f727adf7a3660c/G004/M01/11/0B/pIYBAFT6-dKAG6a7ADVV397ve4k221.mp3" type="audio/mp3">
+</audio>
+<audio id="audio5" loop="loop">
+  <source src="http://fs.w.kugou.com/201801280102/0c3ae2696e8c18642f5d4ae92a65ae5b/G007/M01/1F/03/Rw0DAFS4KQWATVY6ADg75kkDNnE499.mp3" type="audio/mp3">
+</audio>
+<audio id="audio6" loop="loop">
+  <source src="http://fs.w.kugou.com/201801280103/893119f3bc13462493cbdd46729d15a7/G051/M04/10/09/E5QEAFZjKQaAF7k8AB7nS3-ivEk220.mp3" type="audio/mp3">
 </audio>
 <script>
   // 下雪的canvas方法
@@ -262,7 +277,6 @@
 </script>
 <script>
   $(document).ready( function() {
-    var audio = document.getElementById('audio'); 
     $('canvas.flare').let_it_snow({
       windPower: 0,
       speed: 0,
@@ -279,6 +293,7 @@
       size: 0,
     });
     var startP, endP;
+    audioId = 1;
     $('body').on('touchstart', function(event){
       var touch = event.touches[0];
       startP = {
@@ -292,10 +307,20 @@
         y: touch.pageY
       };
       if (endP.x - startP.x > 40) {
-        audio.pause();
+        document.getElementById('audio' + audioId).pause();
       }
       if (endP.x - startP.x < -40) {
-        audio.play();
+        document.getElementById('audio' + audioId).play();
+      }
+      if (endP.y - startP.y < -40) {
+        document.getElementById('audio' + audioId).pause()
+        audioId >= 6 ? audioId = 1 : audioId ++;
+        document.getElementById('audio' + audioId).play()
+      }
+      if (endP.y - startP.y > 40) {
+        document.getElementById('audio' + audioId).pause()
+        audioId <= 1 ? audioId = 6 : audioId --;
+        document.getElementById('audio' + audioId).play()
       }
     })
   });
