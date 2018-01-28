@@ -86,9 +86,6 @@
   <source src="http://fs.w.kugou.com/201801280101/4f9d0b6efdbcfdda32f727adf7a3660c/G004/M01/11/0B/pIYBAFT6-dKAG6a7ADVV397ve4k221.mp3" type="audio/mp3">
 </audio>
 <audio id="audio5" loop="loop">
-  <source src="http://fs.w.kugou.com/201801280102/0c3ae2696e8c18642f5d4ae92a65ae5b/G007/M01/1F/03/Rw0DAFS4KQWATVY6ADg75kkDNnE499.mp3" type="audio/mp3">
-</audio>
-<audio id="audio6" loop="loop">
   <source src="http://fs.w.kugou.com/201801280103/893119f3bc13462493cbdd46729d15a7/G051/M04/10/09/E5QEAFZjKQaAF7k8AB7nS3-ivEk220.mp3" type="audio/mp3">
 </audio>
 <script>
@@ -306,22 +303,17 @@
         x: touch.pageX,
         y: touch.pageY
       };
-      if (endP.x - startP.x > 40) {
+      if (endP.x - startP.x > 20) {
         document.getElementById('audio' + audioId).pause();
       }
-      if (endP.x - startP.x < -40) {
+      if (endP.x - startP.x < -20) {
         document.getElementById('audio' + audioId).play();
       }
-      if (endP.y - startP.y < -40) {
-        document.getElementById('audio' + audioId).pause()
-        audioId >= 6 ? audioId = 1 : audioId ++;
-        document.getElementById('audio' + audioId).play()
-      }
-      if (endP.y - startP.y > 40) {
-        document.getElementById('audio' + audioId).pause()
-        audioId <= 1 ? audioId = 6 : audioId --;
-        document.getElementById('audio' + audioId).play()
-      }
+    });
+    $('body').click(function(){
+      document.getElementById('audio' + audioId).pause()
+      audioId >= 5 ? audioId = 1 : audioId ++;
+      document.getElementById('audio' + audioId).play()
     })
   });
 </script>
