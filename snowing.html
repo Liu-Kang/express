@@ -11,6 +11,7 @@
     <meta name="screen-orientation" content="portrait">
     <meta name="x5-orientation" content="portrait">
     <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="http://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
 </head>
 <style>
   html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, 
@@ -262,6 +263,19 @@
 </script>
 <script>
   $(document).ready( function() {
+    setShareInfo({
+      title: '下雪啦',
+      summary: '门口堆个雪娃娃',
+      pic: 'http://qzonestyle.gtimg.cn/aoi/sola/20150617094556_OvfOpoRKRB.png',
+      url: window.location.href,
+      WXconfig: {
+        swapTitleInWX: true,
+        appId: '',
+        timestamp: '',
+        nonceStr: '',
+        signature: ''
+      }
+    });
     $('canvas.flare').let_it_snow({
       windPower: 0,
       speed: 0,
