@@ -11,7 +11,7 @@
     <meta name="screen-orientation" content="portrait">
     <meta name="x5-orientation" content="portrait">
     <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
-    <script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
+    <script src="https://s0.meituan.net/bs/knb/v1.5.6/knb.js"></script>
 </head>
 <style>
   html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, 
@@ -71,14 +71,19 @@
   }
 </style>
 <body>
-  2222222222222222222
+  99999999999999999999999
 <script>
-  setShareInfo({
-    title: '测试测试测试',
-    summary: 'QQ分享测试QQ分享测试QQ分享测试QQ分享测试QQ分享测试',
-    pic: 'http://qzonestyle.gtimg.cn/aoi/sola/20150617094556_OvfOpoRKRB.png',
-    url: window.location.href
-  });
+  KNB.configShare({
+    title:"羊老三老北京涮肉羊蝎子火锅怎么样_团购羊老三老北京涮肉羊蝎子火锅2-3人餐-美团网", //标题
+    desc:"羊老三老北京涮肉羊蝎子火锅怎么样？美团网提供羊老三老北京涮肉羊蝎子火锅团购，老北京炭火铜锅，建议2-3人使用仅售179元。",  // 分享描述
+    image:'http://qzonestyle.gtimg.cn/aoi/sola/20150617094556_OvfOpoRKRB.png', //分享图标
+    success: function(result){
+      console.log('分享到微信朋友圈拉'); //true
+    },
+    fail: function(res){
+      console.log(JSON.stringify(res)) //用户取消了分享执行fail函数
+    }
+});
 </script>
 </body>
 </html>
