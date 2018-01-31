@@ -262,20 +262,22 @@
   }(window.Zepto);
 </script>
 <script>
+  setShareInfo({
+    title: '测试测试测试',
+    summary: 'QQ分享测试QQ分享测试QQ分享测试QQ分享测试QQ分享测试',
+    pic: 'http://qzonestyle.gtimg.cn/aoi/sola/20150617094556_OvfOpoRKRB.png',
+    url: window.location.href,
+    WXconfig: {
+      swapTitleInWX: true,
+      appId: '',
+      timestamp: '',
+      nonceStr: '',
+      signature: ''
+    }
+  });
+</script>
+<script>
   $(document).ready( function() {
-    setShareInfo({
-      title: '下雪啦',
-      summary: '门口堆个雪娃娃',
-      pic: 'http://qzonestyle.gtimg.cn/aoi/sola/20150617094556_OvfOpoRKRB.png',
-      url: window.location.href,
-      WXconfig: {
-        swapTitleInWX: true,
-        appId: '',
-        timestamp: '',
-        nonceStr: '',
-        signature: ''
-      }
-    });
     $('canvas.flare').let_it_snow({
       windPower: 0,
       speed: 0,
