@@ -11,6 +11,7 @@
     <meta name="screen-orientation" content="portrait">
     <meta name="x5-orientation" content="portrait">
     <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="https://qzonestyle.gtimg.cn/qzone/phone/m/v4/widget/mobile/jsbridge.js"></script>
 </head>
 <style>
   html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, 
@@ -262,6 +263,12 @@
 </script>
 <script>
   $(document).ready( function() {
+    alert(window.mqq)
+    window.mqq.invoke("data", "setShareInfo", {
+      title: '上海自来水来自海上',
+      desc: '上海自来水来自海上上海自来水来自海上上海自来水来自海上',
+      image_url: 'http://i.gtimg.cn/open/app_icon/05/58/35/77/1105583577_100_m.png'
+    });
     $('canvas.flare').let_it_snow({
       windPower: 0,
       speed: 0,
