@@ -13,7 +13,7 @@
     <header>
       <h3>商品名称: {{prod.title}}</h3>
       <h3>款号：{{prod.goodsno}}</h3>
-      <h3>价格{{prod.price}}</h3>
+      <h3>价格: ¥{{prod.price}}</h3>
       <h3>品牌：{{prod.brand}}</h3>
     </header>
     <table border="1" cellspacing="0" cellpadding="3">
@@ -34,7 +34,7 @@
           <td>
             <input type="text" @input="inputValidate('gray', 'S')" class="num" :placeholder="prod.stock.gray.S" >&nbsp;</td>
           <td>
-            <span id="xj0">0</span>
+            <span id="xj0">{{price.gray}}</span>
           </td>
         </tr>
         <tr>
@@ -46,7 +46,7 @@
           <td>
             <input type="text" @input="inputValidate('red', 'S')" class="num" :placeholder="prod.stock.red.S">&nbsp;</td>
           <td>
-            <span id="xj1">0</span>
+            <span id="xj1">{{price.red}}</span>
           </td>
         </tr>
         <tr>
@@ -61,13 +61,13 @@
             <input type="text" @input="inputValidate('yellow', 'S')" class="num" :placeholder="prod.stock.yellow.S">&nbsp;
           </td>
           <td>
-            <span id="xj2">0</span>
+            <span id="xj2">{{price.yellow}}</span>
           </td>
         </tr>
         <tr>
           <td align="right" colspan="5">总件数:
-            <span id="totalid">0</span>，总金额:￥
-            <span id="totalmoney">0</span>元
+            <span id="totalid">{{totalNum}}</span>，总金额:￥
+            <span id="totalmoney">{{price.gray+price.red+price.yellow}}</span>元
             <input type="button" id="subbutton" value="提交订单" :disabled="!submit">
           </td>
         </tr>
@@ -122,6 +122,26 @@
       submit: false
     },
     computed: {
+      price() {
+        let price = {
+          gray: 0,
+          red: 0,
+          yellow: 0
+        };
+        price.gray = 100*(Number(this.choose.gray.M)+Number(this.choose.gray.L)+Number(this.choose.gray.S));
+        price.red = 100*(Number(this.choose.red.M)+Number(this.choose.red.L)+Number(this.choose.red.S));
+        price.yellow = 100*(Number(this.choose.yellow.M)+Number(this.choose.yellow.L)+Number(this.choose.yellow.S));
+        return price;
+      },
+      totalNum() {
+        let num = 0
+        for(let c in this.choose) {
+          for (let s in this.choose[c]) {
+            num += Number(this.choose[c][s])
+          }
+        }
+        return num;
+      }
     },
     methods: {
       inputValidate(color, size) {
@@ -134,8 +154,10 @@
         }
         if (v > stock) {
           event.target.value = this.choose[color][size] = stock;
+        } else {
+          this.choose[color][size] = Number(event.target.value);
         }
-        this.choose[color][size] = v;
+
         for(let c in this.choose) {
           for (let s in this.choose[c]) {
             if (Number(this.choose[c][s]) > 0) {
