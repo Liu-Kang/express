@@ -130,7 +130,7 @@
         };
         for(let c in this.choose) {
           for (let s in this.choose[c]) {
-            price[c] += 100 * (Number(this.choose[c][s]));
+            price[c] += this.prod.price * (Number(this.choose[c][s]));
           }
         }
         return price;
