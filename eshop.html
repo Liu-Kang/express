@@ -128,9 +128,11 @@
           red: 0,
           yellow: 0
         };
-        price.gray = 100*(Number(this.choose.gray.M)+Number(this.choose.gray.L)+Number(this.choose.gray.S));
-        price.red = 100*(Number(this.choose.red.M)+Number(this.choose.red.L)+Number(this.choose.red.S));
-        price.yellow = 100*(Number(this.choose.yellow.M)+Number(this.choose.yellow.L)+Number(this.choose.yellow.S));
+        for(let c in this.choose) {
+          for (let s in this.choose[c]) {
+            price[c] += 100 * (Number(this.choose[c][s]));
+          }
+        }
         return price;
       },
       totalNum() {
