@@ -2,14 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-touch-fullscreen" content="YES" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <script type="text/javascript" src="../public/js/lib/zepto.min.js"></script>
+  <title>jiayu</title>
 </head>
+<style>
+  html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, 
+  dd, p, blockquote, pre, form, fieldset, table, th, td, input, table, textarea {
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    width: 100%;
+    height: 100%;
+    font-size: 100px;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    font-size: 16px;
+    font-family: Arial,'Microsoft YaHei'!important;
+    overflow-x: hidden;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: #FFF;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .faces {
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .face-box {
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(.8);
+  }
+  .face-box.show {
+    opacity: 1;
+    transform: scale(1);
+    transition: all .5s;
+  }
+  .face-box img {
+    opacity: 1;
+    transform: scale(1);
+    width: 100%;
+  }
+  .face-box p {
+    color: #000;
+  }
+  .avatar {
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    opacity: 0;
+  }
+  .avatar.show {
+    opacity: 1;
+    transition: all .5s;
+  }
+  .avatar img {
+    width: 100%;
+  }
+</style>
 <body>
   <div class="container">
-    <img src="./0.jpg" alt="">
-    <img src="./1.jpg" alt="">
-    <img src="./2.jpg" alt="">
+    <div class="faces">
+      <div class="face-box face8">
+        <img src="./3.jpg" alt="">
+        <p>我喜欢她！</p>
+      </div>
+      <div class="face-box face0">
+        <img src="./7.jpg" alt="">
+        <p>妈妈快看！</p>
+      </div>
+      <div class="face-box face2">
+        <img src="./2.jpg" alt="">
+        <p>就是她！！</p>
+      </div>
+      <div class="face-box face7">
+        <img src="./1.jpg" alt="">
+        <p>我认定她了！！！</p>
+      </div>
+      <div class="avatar face1">
+        <img src="./jiayu.jpg" alt="">
+      </div>
+      <div class="face-box face3">
+        <img src="./0.jpg" alt="">
+        <p>聪明又漂亮</p>
+      </div>
+      <div class="face-box face6">
+        <img src="./4.jpg" alt="">
+        <p>她叫黄加玉</p>
+      </div>
+      <div class="face-box face5">
+        <img src="./6.jpg" alt="">
+        <p>还有点逗比</p>
+      </div>
+      <div class="face-box face4">
+        <img src="./5.jpg" alt="">
+        <p>温柔又善良</p>
+      </div>
+    </div>
   </div>
 </body>
+<script>
+  $(document).ready(function() {
+    showFaces(0);
+  });
+  function showFaces(index) {
+    setTimeout(function() {
+      // $('.face' + index).css('opacity', '1');
+      $('.face' + index).addClass('show');
+      if (index < 8) {
+        showFaces(index + 1);
+      }
+    }, 2000);
+  }
+</script>
 </html>
