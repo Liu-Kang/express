@@ -83,12 +83,12 @@
   /**
    * 唤起相册/相机
    */
-  function invokeAlbum() {
+  function invokeAlbum(count = 1) {
     alert('start33');
     callNative({
       ntMethod: 'invokeAlbumMulti',
       ntParams: {
-        reqCount: options.reqCount + 1,
+        reqCount: count,
       },
     });
     return new Promise((resolve, reject) => {
