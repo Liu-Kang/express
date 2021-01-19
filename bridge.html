@@ -91,8 +91,8 @@
     });
     return new Promise((resolve, reject) => {
       window.ykzApp.on('setAlbumBase64', (obj) => {
-        alert(JSON.stringify(obj));
-        if (obj.jsParams.b64Value) {
+        alert('on5');
+        if (obj.jsParams && obj.jsParams.b64Value) {
           obj.jsParams.b64Value = obj.jsParams.b64Value.replace(/\r\n/g, '');
           resolve(obj.jsParams);
         } else {
