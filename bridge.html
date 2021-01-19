@@ -13,8 +13,8 @@
 </head>
 <body>
   <div class="container">
-    <button id="button-ykz" style="display: none;">唤起app相机</button>
-    <input type="file" capture="camera" id="button-h5" style="display: none;">
+    <button id="button-ykz" style="display: block;">唤起app相机</button>
+    <input type="file" capture="camera" id="button-h5" style="display: block; margin-top: 20px;">
   </div>
 </body>
 <script>
@@ -103,11 +103,6 @@
   }
 
   window.onload = function() {
-    if (isYkzApp()) {
-      document.querySelector('#button-ykz').style.dispaly = 'block';
-    } else {
-      document.querySelector('#button-h5').style.display = 'block';
-    }
     document.querySelector('#button-ykz').onclick = function() {
       invokeAlbum().then((res) => {
         alert('success:' + JSON.stringify(res));
