@@ -63,6 +63,7 @@
    * 原生调用JS
    */
   window.callJS = function(obj) {
+    alert('calljs:'+JSON.stringify(obj));
     if (typeof obj == 'string') {
       obj = JSON.parse(obj.replace(/\r\n/g, ''));
     }
