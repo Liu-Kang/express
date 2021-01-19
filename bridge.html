@@ -84,14 +84,12 @@
    * 唤起相册/相机
    */
   function invokeAlbum() {
-    alert('start7');
     callNative({
       ntMethod: 'invokeAlbum',
       ntParams: {},
     });
     return new Promise((resolve, reject) => {
       window.ykzApp.on('setAlbumBase64', (obj) => {
-        alert('on7');
         if (obj.jsParams && obj.jsParams.b64Value) {
           obj.jsParams.b64Value = obj.jsParams.b64Value.replace(/\r\n/g, '');
           resolve(obj.jsParams);
