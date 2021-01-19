@@ -55,7 +55,7 @@
    * 唤起相册/相机
    */
   function invokeAlbum() {
-    alert(111);
+    alert('start');
     callNative({
       ntMethod: 'invokeAlbum',
       ntParams: {},
@@ -107,7 +107,7 @@
       invokeAlbum().then((res) => {
         alert(JSON.stringify(res));
       }).catch((err) => {
-        alert(JSON.stringify(err));
+        alert('error:'+JSON.stringify(err));
       })
     };
   };
