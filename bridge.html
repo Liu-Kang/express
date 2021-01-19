@@ -63,8 +63,6 @@
    * 原生调用JS
    */
   window.callJS = function(obj) {
-    alert('calljs:'+JSON.stringify(obj));
-    alert(JSON.stringify(window.onResponse));
     if (typeof obj == 'string') {
       obj = JSON.parse(obj.replace(/\r\n/g, ''));
     }
@@ -76,7 +74,7 @@
   }
   window.ykzApp.on = function(e, fn, fn_afterFn) {
     if (typeof fn === 'function') {
-      window.onResponse[String(e)] = function (obj) {
+      window.ykzApp.onResponse[String(e)] = function (obj) {
         fn(obj);
         typeof fn_afterFn === 'function' && fn_afterFn(obj);
       };
@@ -86,20 +84,20 @@
    * 唤起相册/相机
    */
   function invokeAlbum() {
-    alert('start6');
+    alert('start7');
     callNative({
       ntMethod: 'invokeAlbum',
       ntParams: {},
     });
     return new Promise((resolve, reject) => {
       window.ykzApp.on('setAlbumBase64', (obj) => {
-        alert('on6');
+        alert('on7');
         if (obj.jsParams && obj.jsParams.b64Value) {
           obj.jsParams.b64Value = obj.jsParams.b64Value.replace(/\r\n/g, '');
           resolve(obj.jsParams);
         } else {
           //获取图片回调失败
-          reject('坏啦');
+          reject(obj.jsParams);
         }
       });
     });
