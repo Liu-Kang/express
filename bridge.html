@@ -51,6 +51,9 @@
       console.error(e);
     }
   }
+  /**
+   * 唤起相册/相机
+   */
   function invokeAlbum() {
     callNative({
       ntMethod: 'invokeAlbum',
@@ -99,7 +102,9 @@
   }
   window.onload = function() {
     document.querySelector('#button').onclick = function() {
-      invokeAlbum()
+      invokeAlbum().then((res) => {
+        alert(JSON.stringify(res));
+      });
     };
   };
 </script>
