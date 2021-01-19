@@ -64,13 +64,14 @@
    */
   window.callJS = function(obj) {
     alert('calljs:'+JSON.stringify(obj));
+    alert(JSON.stringify(window.onResponse));
     if (typeof obj == 'string') {
       obj = JSON.parse(obj.replace(/\r\n/g, ''));
     }
     obj.jsParams = obj.jsParams || {};
     //从响应对象中找出是否已有待响应方法
-    if (obj.jsMethod && window.onResponse[obj.jsMethod]) {
-      window.onResponse[obj.jsMethod](obj);
+    if (obj.jsMethod && window.ykzApp.onResponse[obj.jsMethod]) {
+      window.ykzApp.onResponse[obj.jsMethod](obj);
     }
   }
   window.ykzApp.on = function(e, fn, fn_afterFn) {
@@ -85,14 +86,14 @@
    * 唤起相册/相机
    */
   function invokeAlbum() {
-    alert('start5');
+    alert('start6');
     callNative({
       ntMethod: 'invokeAlbum',
       ntParams: {},
     });
     return new Promise((resolve, reject) => {
       window.ykzApp.on('setAlbumBase64', (obj) => {
-        alert('on5');
+        alert('on6');
         if (obj.jsParams && obj.jsParams.b64Value) {
           obj.jsParams.b64Value = obj.jsParams.b64Value.replace(/\r\n/g, '');
           resolve(obj.jsParams);
