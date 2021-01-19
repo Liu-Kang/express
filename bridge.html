@@ -83,42 +83,24 @@
   /**
    * 唤起相册/相机
    */
-  function invokeAlbum(count = 1) {
-    alert('start44');
+  function invokeAlbum() {
+    alert('start5');
     callNative({
-      ntMethod: 'invokeAlbumMulti',
-      ntParams: {
-        reqCount: count,
-      },
+      ntMethod: 'invokeAlbum',
+      ntParams: {},
     });
     return new Promise((resolve, reject) => {
-      window.ykzApp.on('invokeAlbumMultiResult', (obj) => {
-        alert('444:'+JSON.stringify(obj));
-        if (obj.jsParams) {
-          //授权成功回调
+      window.ykzApp.on('setAlbumBase64', (obj) => {
+        alert(JSON.stringify(obj));
+        if (obj.jsParams.b64Value) {
+          obj.jsParams.b64Value = obj.jsParams.b64Value.replace(/\r\n/g, '');
           resolve(obj.jsParams);
         } else {
-          //授权失败回调
-          reject(obj.jsParams);
+          //获取图片回调失败
+          reject('坏啦');
         }
       });
     });
-  //   callNative({
-  //     ntMethod: 'invokeAlbum',
-  //     ntParams: {},
-  //   });
-  //   return new Promise((resolve, reject) => {
-  //     window.ykzApp.on('setAlbumBase64', (obj) => {
-  //       alert('222:'+JSON.stringify(obj));
-  //       if (obj.jsParams.b64Value) {
-  //         obj.jsParams.b64Value = obj.jsParams.b64Value.replace(/\r\n/g, '');
-  //         resolve(obj.jsParams);
-  //       } else {
-  //         //获取图片回调失败
-  //         reject(obj.jsParams);
-  //       }
-  //     });
-  //   });
   }
 
   window.onload = function() {
