@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-touch-fullscreen" content="YES" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <button id="button">唤起相机</button>
+  </div>
+</body>
+<script>
+  /**
+   * 判断是否云客赞app
+   */
+  function isYkzApp() {
+    return navigator.userAgent.match(/Yunkezan/i);
+  }
+  function isIos() {
+    const ua = navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test(ua);
+  }
+  function isAndroid() {
+    const ua = navigator.userAgent.toLowerCase();
+    return /android/.test(ua);
+  }
+  /**
+   * JS调用原生
+   */
+  function callNative(nativeObj) {
+    let nativeObjStr = '';
+    if (typeof nativeObj === 'object') {
+      nativeObjStr = JSON.stringify(nativeObj);
+    } else {
+      nativeObjStr = String(nativeObj);
+    }
+    try {
+      if (isIos()) {
+        window.webkit.messageHandlers.callNative.postMessage(nativeObjStr);
+      } else {
+        window.ykJsBridge.callNative(nativeObjStr);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  function invokeAlbum() {
+    callNative({
+      ntMethod: 'invokeAlbum',
+      ntParams: {},
+    });
+    return new Promise((resolve, reject) => {
+      window.ykzApp.on('setAlbumBase64', (obj) => {
+        if (obj.jsParams.b64Value) {
+          obj.jsParams.b64Value = obj.jsParams.b64Value.replace(/\r\n/g, '');
+          resolve(obj.jsParams);
+        } else {
+          //获取图片回调失败
+          reject(obj.jsParams);
+        }
+      });
+    });
+  }
+
+  //存储响应列表，等待app calljs响应
+  if (!window.ykzApp) {
+    window.ykzApp = {};
+  }
+  if (!window.ykzApp.onResponse) {
+    window.ykzApp.onResponse = {};
+  }
+  /**
+   * 原生调用JS
+   */
+  window.callJS = function(obj) {
+    if (typeof obj == 'string') {
+      obj = JSON.parse(obj.replace(/\r\n/g, ''));
+    }
+    obj.jsParams = obj.jsParams || {};
+    //从响应对象中找出是否已有待响应方法
+    if (obj.jsMethod && window.onResponse[obj.jsMethod]) {
+      window.onResponse[obj.jsMethod](obj);
+    }
+  }
+  window.ykzApp.on = function(e, fn, fn_afterFn) {
+    if (typeof fn == 'function') {
+      window.onResponse[String(e)] = function (obj) {
+        fn(obj);
+        typeof fn_afterFn === 'function' && fn_afterFn(obj);
+      };
+    }
+  }
+  window.onload = function() {
+    document.querySelector('#button').onclick = function() {
+      invokeAlbum()
+    };
+  };
+</script>
+</html>
