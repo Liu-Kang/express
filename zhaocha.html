@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script></script>
+  <script src="./jquery.js"></script>
+  <title>Document</title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  .container {
+
+  }
+  .select {
+    margin: 20px auto;
+    width: 800px;
+    line-height: 30px;
+    color: #888;
+    display: flex;
+    justify-content: center;
+  }
+  .input {
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin: 0 20px;
+    padding: 0 10px;
+  }
+  button {
+    width: 90px;
+    height: 34px;
+    line-height: 30px;
+  }
+  .box {
+    margin: 0 auto;
+    width: 90%;
+    height: 600px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .block {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .block1 {
+    margin-right: 50px;
+  }
+  .mod {
+    border: 1px solid #888;
+  }
+  .color-selector {
+    margin-left: 20px;
+    height: 34px;
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="select">
+      <span>输入边框色块个数：</span>
+      <input class="input" type="text">
+      <button id="create">确定</button>
+      <div class="selector" style="display: none;">
+        <select class="color-selector" value="蓝色" id="color-choice">
+          <option value="blue">蓝色</option>
+          <option value="green">绿色</option>
+          <option value="red">红色</option>
+          <option value="orange">橙色</option>
+          <option value="yellow">黄色</option>
+          <option value="white">白色</option>
+        </select>
+        <button id="change">更改颜色</button>
+      </div>
+    </div>
+    <div class="box">
+      <div class="block1 block"></div>
+      <div class="block2 block"></div>
+    </div>
+  </div>
+</body>
+<script>
+  var color = ['red', 'blue', 'yellow', 'green', 'orange', 'white'];
+  var num = 0;
+  var arr1 = [];
+  var arr2 = [];
+  $(document).ready(function(){
+
+    $('body').click(function() {
+      $('.block2 .mod').css('border', '1px solid #888');
+    })
+
+    $('.input').on('input',function() {
+      if(Number($(this).val()) > 60) {
+        alert('不要大于60');
+        $(this).val('60');
+      }
+    });
+
+    $('#create').click(() => {
+      arr1 = [];
+      arr2 = [];
+      $('.block').empty();
+      num = Math.pow(Number($('.input').val()), 2);
+      createBlock();
+      renderBlock();
+    });
+
+    $('.block2').on('click', '.mod', function() {
+      $('.block2 .mod').css('border', '1px solid #888');
+      $(this).css('border', '2px solid turquoise');
+      $('.selector').show();
+      var index = $(this).attr('index');
+      $('#change').attr('index', index);
+      event.stopPropagation();
+    });
+
+    $('#change').click(function() {
+      var index = Number($(this).attr('index'));
+      var choice = $('#color-choice').val();
+      if (choice === arr2[index]) {
+        alert('换个不一样的颜色')
+        return;
+      }
+      arr2[index] = choice;
+      $('.block2').find(`[index=${index}]`).css({
+        'background-color': arr2[index],
+        'border': '1px solid #888'
+      });
+    });
+  })
+
+  function chooseColor() {
+    return color[Math.floor(Math.random() * 6)];
+  }
+
+  function createBlock() {
+    for (let i = 0; i < num; i++) {
+      arr1[i] = chooseColor();
+    }
+    arr2 = arr1;
+  }
+
+  function renderBlock() {
+    var html = '';
+    var size = $('.block1').width() / Math.sqrt(num);
+    for (let i = 0; i < num; i++) {
+      html += `<div class="mod" index="${i}" style="background-color:${arr1[i]};width:${size}px;height:${size}px;"></div>`;
+    }
+    $('.block1').append(html);
+    $('.block2').append(html);
+  }
+</script>
+</html>
