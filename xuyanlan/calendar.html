@@ -72,10 +72,10 @@
 <body>
   <div class="container">
     <div class="content">
-      <div class="item">第一次聊天：<span class="day" id="days_firstChatDate"></span> 天</div>
-      <div class="item">第一次见面：<span class="day" id="days_firstMetDate"></span> 天</div>
-      <div class="item">第一次牵手：<span class="day" id="days_firstHIHDate"></span> 天</div>
-      <div class="item">第一天交往：<span class="day" id="days_firstDetermineDate"></span> 天</div>
+      <div class="item">第一次聊天：<span class="day" id="days_firstChatDate"></span> <span class="unit">天</span></div>
+      <div class="item">第一次见面：<span class="day" id="days_firstMetDate"></span> <span class="unit">天</span></div>
+      <div class="item">第一次牵手：<span class="day" id="days_firstHIHDate"></span> <span class="unit">天</span></div>
+      <div class="item">第一天交往：<span class="day" id="days_firstDetermineDate"></span> <span class="unit">天</span></div>
     </div>
   </div>
 </body>
@@ -84,12 +84,37 @@
   const firstMetDate = new Date(2021, 11, 26)
   const firstHIHDate = new Date(2022, 0, 1)
   const firstDetermineDate = new Date(2022, 0, 13)
+  let showType = 'days';
   $(document).ready(function() {
+    setDays();
+    $('body').click(function() {
+      if (showType === 'days') {
+        setDate()
+      } else {
+        setDays()
+      }
+    })
+  });
+
+  function setDays() {
     document.getElementById('days_firstChatDate').innerText = daysCount(firstChatDate)
     document.getElementById('days_firstMetDate').innerText = daysCount(firstMetDate)
     document.getElementById('days_firstHIHDate').innerText = daysCount(firstHIHDate)
     document.getElementById('days_firstDetermineDate').innerText = daysCount(firstDetermineDate)
-  });
+    document.querySelectorAll('.day').forEach((el) => el.style.fontSize = '38px')
+    document.querySelectorAll('.unit').forEach((el) => el.style.display = 'inline')
+    showType = 'days';
+  }
+
+  function setDate() {
+    document.getElementById('days_firstChatDate').innerText = '2021年11月15日'
+    document.getElementById('days_firstMetDate').innerText = '2021年11月26日'
+    document.getElementById('days_firstHIHDate').innerText = '2022年1月1日'
+    document.getElementById('days_firstDetermineDate').innerText = '2022年1月13日'
+    document.querySelectorAll('.day').forEach((el) => el.style.fontSize = '28px')
+    document.querySelectorAll('.unit').forEach((el) => el.style.display = 'none')
+    showType = 'date';
+  }
 
   function daysCount(date) {
     const today = new Date()
