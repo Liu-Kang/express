@@ -11,7 +11,7 @@
   <meta name="screen-orientation" content="portrait">
   <meta name="x5-orientation" content="portrait">
   <script type="text/javascript" src="../public/js/lib/zepto.min.js"></script>
-  <title>小老妹</title>
+  <title>康康&兰兰</title>
 </head>
 <style>
   html,body,div,h1,h2,h3,h4,h5,h6,ul,ol,dl,li,dt,dd,p,blockquote,pre,form,fieldset,table,th,td,input,table,textarea {
@@ -103,7 +103,7 @@
 
 <body>
   <div class="container">
-    <audio id="audio" autoplay loop="loop">
+    <audio id="audio" autoplay="autoplay" loop="loop">
       <source src="https://rm01-sycdn.kuwo.cn/335700718d117b3a229041794c5e0e00/61f237f0/resource/n2/29/79/2941960172.mp3" type="audio/mp3" />
     </audio>
     <a href="javascript:void(0);" class="music" id="music">
@@ -166,15 +166,12 @@
       var audio = document.getElementById('audio');
       if (audio.paused) {
         audio.play();
-        if (!audio.paused) {
-          $('#music-icon').css('animation-play-state', 'running');
-        }
+        $('#music-icon').css('animation-play-state', 'running');
       } else {
         audio.pause();
         $('#music-icon').css('animation-play-state', 'paused');
       }
     }
-    playMusic();
     $('#music').click(function () {
       playMusic();
       event.stopPropagation();
