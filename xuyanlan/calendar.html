@@ -14,6 +14,9 @@
   <title>康康&兰兰</title>
 </head>
 <style>
+  * {
+    box-sizing: border-box;
+  }
   html,body,div,h1,h2,h3,h4,h5,h6,ul,ol,dl,li,dt,dd,p,blockquote,pre,form,fieldset,table,th,td,input,table,textarea {
     margin: 0;
     padding: 0;
@@ -49,32 +52,45 @@
     height: 100%;
     max-width: 500px;
     margin: 0 auto;
-    background: url('./calendar_bg.jpeg') no-repeat;
+    background: url('./bg2.jpg') no-repeat;
     background-size: cover;
     background-position: bottom;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   .content {
-    width: 85%;
+    width: 100vw;
     margin-top: 48px;
     font-weight: bold;
+    padding: 0 20px;
   }
 
   .content .item {
     font-size: 26px;
+    height: 52px;
     margin-top: 20px;
-    color: #f5f5dc;
+    color: #232f68;
+    display: flex;
+    justify-content: space-between;
+    font-family: cursive;
+    align-items: center;
   }
-
+  .content .item-title {
+    flex: 1;
+    text-align: right;
+  }
+  .content .item-value {
+    width: 150px;
+    text-align: right;
+  }
   .content .day {
     font-size: 38px;
-    color: #f28026d1;
+    color: #232f68;
     font-weight: bold;
-    text-shadow: 5px 2px 6px #d4915d;
+    text-shadow: 5px 2px 6px #8496ea;
   }
 
   .music {
@@ -104,16 +120,48 @@
 <body>
   <div class="container">
     <audio id="audio" autoplay="autoplay" loop="loop">
-      <source src="https://rm01-sycdn.kuwo.cn/335700718d117b3a229041794c5e0e00/61f237f0/resource/n2/29/79/2941960172.mp3" type="audio/mp3" />
+      <source src="https://sg-sycdn.kuwo.cn/28626c069ea532738fce2c5b6c550037/652151b4/resource/n3/52/23/139395204.mp3" type="audio/mp3" />
     </audio>
     <a href="javascript:void(0);" class="music" id="music">
       <img id="music-icon" src="./music.png">
     </a>
     <div class="content">
-      <div class="item">第一次聊天：<span class="day" id="days_firstChatDate"></span> <span class="unit">天</span></div>
-      <div class="item">第一次见面：<span class="day" id="days_firstMetDate"></span> <span class="unit">天</span></div>
-      <div class="item">第一次牵手：<span class="day" id="days_firstHIHDate"></span> <span class="unit">天</span></div>
-      <div class="item">第一天交往：<span class="day" id="days_firstDetermineDate"></span> <span class="unit">天</span></div>
+      <div class="item">
+        <span class="item-title">第一次聊天：</span>
+        <span class="item-value">
+          <span class="day" id="days_firstChatDate"></span> <span class="unit">天</span>
+        </span>
+      </div>
+      <div class="item">
+        <span class="item-title">第一次见面：</span>
+        <span class="item-value">
+          <span class="day" id="days_firstMetDate"></span> <span class="unit">天</span>
+        </span>
+      </div>
+      <div class="item">
+        <span class="item-title">第一次牵手：</span>
+        <span class="item-value">
+          <span class="day" id="days_firstHIHDate"></span> <span class="unit">天</span>
+        </span>
+      </div>
+      <div class="item">
+        <span class="item-title">第一天交往：</span>
+        <span class="item-value">
+          <span class="day" id="days_firstDetermineDate"></span> <span class="unit">天</span>
+        </span>
+      </div>
+      <div class="item">
+        <span class="item-title">第一次去刘康家：</span>
+        <span class="item-value">
+          <span class="day" id="days_firstGoLiuHomeDate"></span> <span class="unit">天</span>
+        </span>
+      </div>
+      <div class="item">
+        <span class="item-title">第一次去艳兰家：</span>
+        <span class="item-value">
+          <span class="day" id="days_firstGoXuHomeDate"></span> <span class="unit">天</span>
+        </span>
+      </div>
     </div>
   </div>
 </body>
@@ -122,24 +170,32 @@
   const firstMetDate = new Date(2021, 11, 26)
   const firstHIHDate = new Date(2022, 0, 1)
   const firstDetermineDate = new Date(2022, 0, 13)
+  const firstGoLiuHomeDate = new Date(2022, 9, 2)
+  const firstGoXuHomeDate = new Date(2023, 9, 2)
   let showType = 'days';
-  $(document).ready(function () {
+  window.onload = function () {
     setDays();
-    musicPause();
-    $('body').click(function () {
+    document.getElementById('music').onclick = function() {
+      playMusic();
+      event.stopPropagation();
+    };
+    document.body.onclick = function () {
+      playMusic(1);
       if (showType === 'days') {
         setDate()
       } else {
         setDays()
       }
-    })
-  });
+    };
+  };
 
   function setDays() {
     document.getElementById('days_firstChatDate').innerText = daysCount(firstChatDate)
     document.getElementById('days_firstMetDate').innerText = daysCount(firstMetDate)
     document.getElementById('days_firstHIHDate').innerText = daysCount(firstHIHDate)
     document.getElementById('days_firstDetermineDate').innerText = daysCount(firstDetermineDate)
+    document.getElementById('days_firstGoLiuHomeDate').innerText = daysCount(firstGoLiuHomeDate)
+    document.getElementById('days_firstGoXuHomeDate').innerText = daysCount(firstGoXuHomeDate)
     document.querySelectorAll('.day').forEach((el) => el.style.fontSize = '38px')
     document.querySelectorAll('.unit').forEach((el) => el.style.display = 'inline')
     showType = 'days';
@@ -150,6 +206,8 @@
     document.getElementById('days_firstMetDate').innerText = '2021/12/26'
     document.getElementById('days_firstHIHDate').innerText = '2022/01/01'
     document.getElementById('days_firstDetermineDate').innerText = '2022/01/13'
+    document.getElementById('days_firstGoLiuHomeDate').innerText = '2022/10/02'
+    document.getElementById('days_firstGoXuHomeDate').innerText = '2023/10/02'
     document.querySelectorAll('.day').forEach((el) => el.style.fontSize = '28px')
     document.querySelectorAll('.unit').forEach((el) => el.style.display = 'none')
     showType = 'date';
@@ -161,21 +219,22 @@
     return days;
   }
 
-  function musicPause() {
-    var playMusic = function() {
-      var audio = document.getElementById('audio');
-      if (audio.paused) {
-        audio.play();
-        $('#music-icon').css('animation-play-state', 'running');
-      } else {
-        audio.pause();
-        $('#music-icon').css('animation-play-state', 'paused');
-      }
+  function playMusic(type) {
+    var audio = document.getElementById('audio');
+    if (audio.paused || type === 1) {
+      audio.play();
+      document.getElementById('music-icon').style['animation-play-state'] = 'running';
+    } else {
+      audio.pause();
+      document.getElementById('music-icon').style['animation-play-state'] = 'paused';
     }
-    $('#music').click(function () {
+  }
+
+  function musicPause() {
+    document.getElementById('music').onclick = function() {
       playMusic();
       event.stopPropagation();
-    });
+    };
   }
 </script>
 
