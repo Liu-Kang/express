@@ -65,7 +65,7 @@
     width: 100vw;
     margin-top: 48px;
     font-weight: bold;
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
   .content .item {
@@ -75,16 +75,17 @@
     color: #232f68;
     display: flex;
     justify-content: space-between;
-    font-family: cursive;
     align-items: center;
   }
   .content .item-title {
     flex: 1;
     text-align: right;
+    font-size: 24px;
   }
   .content .item-value {
-    width: 150px;
+    width: 140px;
     text-align: right;
+    font-family: cursive;
   }
   .content .day {
     font-size: 38px;
@@ -197,6 +198,7 @@
     document.getElementById('days_firstGoLiuHomeDate').innerText = daysCount(firstGoLiuHomeDate)
     document.getElementById('days_firstGoXuHomeDate').innerText = daysCount(firstGoXuHomeDate)
     document.querySelectorAll('.day').forEach((el) => el.style.fontSize = '38px')
+    document.querySelectorAll('.item-value').forEach((el) => el.style.paddingRight = '30px')
     document.querySelectorAll('.unit').forEach((el) => el.style.display = 'inline')
     showType = 'days';
   }
@@ -209,6 +211,7 @@
     document.getElementById('days_firstGoLiuHomeDate').innerText = '2022/10/02'
     document.getElementById('days_firstGoXuHomeDate').innerText = '2023/10/02'
     document.querySelectorAll('.day').forEach((el) => el.style.fontSize = '28px')
+    document.querySelectorAll('.item-value').forEach((el) => el.style.paddingRight = '0px')
     document.querySelectorAll('.unit').forEach((el) => el.style.display = 'none')
     showType = 'date';
   }
